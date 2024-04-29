@@ -1,0 +1,337 @@
+Markteing Cloud-Its a CRM.which gives marketers the power to manage,analyse the lead,get the insites of the camping running
+
+
+left side is Studios-Stuudious are channel that is used to communicate with customer
+
+Builders-Create the content used to communicate with customer (like zomato email ),manage data
+
+Email studio-if a customer has added some products in cart then send him Email,to buy it fast...
+if the customer ha purchased the product then send him email that this is your bill,and thanyou mail
+
+Mobile Stdio-Used to send push notifications or SMS,like in app notification, eg zomato-are you hungry today
+
+Social Studio-create, schedule, and monitor social media posts and take advantage of real-time engagement, and rich analytics – all in a unified interface.
+eg:if we open fb and insta,there we see the advertisement,This marketers will track your history,what u have searched and will display the ads related to your searches.(real time engagement)
+
+
+Advertising studio-It is like Google Adword.
+Align online advertising with your CRM.find new prospect with lookaLike Audiances.What costomer are looking for,the product performance
+
+Web Stdio-Manage Web Experience (eg-Landing Page,mircoSites)
+
+1)Cloud Pages-once ad is clicked ,they will capture your information like email etc ,abnd they will make you their customer
+
+Automation Studio/Personalization-we can take any stdio combine them and we can personalize them
+
+*******************
+Builder-Content Creation and manage data
+
+Content Builder-creating the content
+
+Journey Builder-
+1)Automation Studio-if we want to send email at perticular time
+
+2)Journey Builder-Complete chart of customer,eg- from where we got this customer,did that customer replied,basically we can track
+
+**********************
+Marketing cloud Supports B2B and B2C
+		b2b					b2c
+focus		business Org(infy-RBS)		shopkeeper-consumer
+DealSize	Large(Bulk)				Small(1-5)
+Decision 	Multiple				Single
+Maker
+
+**********************************
+Benifitis-
+-real time engagement
+-Connects known and unknown users
+-Leverage data and Einstein artifecial intellegence
+**********************
+MID number-it is the id assigned to the organisation
+ECAS-business unit
+
+4 types of Tenant-
+eg- Reliance industry-jio,apparels,petrolium
+reliance insutry-Parent unit (diferent MID)
+jio,apparel,petrolim-children unit/business unit (Differnet MID)
+
+Enterprise 2.0
+each child have individaul head.so that head can take their own decision
+
+Enterprise 1.0-If any child has to do anyting then it has to ask Parent unit,even if they have the head
+
+Core tenant-if org is small.there will be only one unit parent unit
+1 account -1 miD
+
+Agency-Bigger Org- Parent-childs-child
+eg-Tata- Technology,steel,Automative,consumer & retial
+   Technology-TCS,tata elexi
+
+Technology becomes different agency
+
+*********************************
+Business Unit-If we want to create Business unit then we can go to Setup-->business Unit
+
+eg-Business unit-ECAS
+Now we will be adding users to the organisation
+Then The role of that user
+then the permission for that user
+
+User
+go Setup-->user-->click on business Unit--> create
+for roles
+Setup-->user-->click on business Unit--> Manage roles
+
+Roles-System Defined Roles,Custom roles
+In roles we can change permission
+
+Company Setting-City,State,Company Name
+after setting Business unit,user,roles create COMPANY Settings
+
+Contact us,about us page
+Setup-->Company Settings-->Account Settings
+
+suppose we have a sales cloud -->we want to import those customers to Markeitng cloud-->then we USE MCC(marketing Cloud Connect) and SOAP WSDL
+
+
+******************************
+customer(Contact)-Person who is associated with your org,visited your website,purchased something
+
+Contact data-profile,channel identifier(how did he communicated)
+
+relational data-behaviour (what he searches)
+
+Subscriber-who opt-in for email/communication (who wants there news to be mailed)
+
+NOTE-Not all customers are Subscribers
+
+***************
+For every Subscriber there is unique key-known as Subscriber Key
+In other content we use-Contact Key
+Both are same Subscriber Key and contact key
+
+For subscriber we have to map email and Subscriber key
+
+Subscriber Status-active,unsubscribed,held/undeliverable(grey),bounced(yellow)
+
+profile Attributes-Input relevant information about the subscriber(firstName,lastName,contactNumber)
+
+Preference Attributes(boolean value)-Know what kind of communication the subscriber prefer,we can save the customer preference (like html formate)
+
+if at parent level we have defined Profile attributes and preference attributes,then child level also has to follow this.that means we cannot change the profile attributes and preference attributes at child level
+*******************
+Bounce Mail Type(BTS-H)-soft bounce,hard bounce,block bounce,technical bounce
+
+1)Soft bounce-when we send email and it comes back it is called soft bounce.
+When the email server rejects the email due to a temporary condition.eg(free some space in you email to receive email)
+15min for 72 hours,288 tries
+
+2)Hard Bounce-when the email server reject the email due to permanent condition
+eg-wrong email address
+
+3)Block Bounce-When the email server rejects the email because of a lack of authentication or if the domain or ip adddress appears on a locklist
+eg-if the server blocked some ips,then we cant send email 
+
+4)Technical Bounce-reject due to technical error,such as a data formate or network issue
+
+****************
+After Setting Company Setting -->Security Settings
+Session timeout,Login expire After Inactivities,mini User length,etc
+
+**********
+List-Subscribe count less then 5 lakh
+We can store the data of subscriber inside a list (only subscriber),which receives notifications
+For all the list the structure will be same
+
+Data-Extension (DataBase)-Count more then 5 lakh
+To store the information of subscriber (except Profile,preferences...eg- What product does subscribe ordered) Inderictly related
+
+List-Subscriber-->list-->create List-->select email template
+
+How to create DataExtension-
+DataExtension->create-->sandard/filtered/random data extension-->(Property)-->new/existing/template-->Data Retention Policy-->fields (to add new fields)
+
+isSendable-->any of the field is able to communicate with the customer (eg-email of customer)
+
+if isSendable is clicked then is Testable gets visible
+isTestable-do you want to test that email before sending the mail
+
+DataRetention policy-We can delete the record based on the 3 catogery
+individual,all records,all reecords and data extion
+Period-after which time the records will be deleted
+
+Only if isEditible-then
+make one key always Primary key,or we can also combine 2 field to make one Primary Key
+
+send Relationship Cust_id related to Subscribe on Subscriber key
+-it means cust_id will be Subsbcriber key
+
+DataExtension DataTypes-
+text-A combination of letter,number and spaces
+    -up to 4000 char
+    -text filed definition can only be updated to 	increase the size of the field
+
+Number-an integer,you cant import decimal
+
+Date-system date,MM/DD/YYYY
+
+boolean-y,n
+
+email-an email address
+
+Decimal-decimal field
+
+Local-iso language and code
+
+My Data Relationship-we can have relation between two data Extension tables.We can Make relationship between this extension table ,we can filter the data withoud using the SQL
+
+Group (Filtering)-When we want to get the subset of the List.it is applicable to both list and DataExtention
+eg-we want to Seperate the data based on the gender
+List-both male females
+group Filters-only females
+
+2)Random group-it will select records randomly
+
+DataExtension-Filtter Data Extension-we can get the already created dataExtension-->select the data extension and filter it
+
+
+*********
+Subscriber-create->define a key-->email address-->profile attributes (first Name, lastname, dateOfBirth) which is declared at BU level-->preference Attribute (Data Type should be Boolean) HTML formate-->add the List-->finish
+
+We can also import the list-
+list-import-->next-->map
+
+***************
+Publication List(NewLetter,Offers,ReceiveVouchers)-Publication lists make it possible for subscribers to opt out of a category of sends without opting out of all messages from your organization.
+
+A publication list helps you manage how subscribers receive several different categories of emails or SMS messages. For example, send newsletters, advertisements, and alerts. Each of these is a different category, so create a separate publication list for each category. When you send a newsletter, associate the send with the newsletter publication list to identify to the system what kind of content is inside the publication.
+
+*********************
+SUpression list-Add those subscriber who you dont want to send the email.
+eg-those who are competitor
+
+****************
+Measures-It is used to track the emails sent
+OuterGrouping-To add filters 
+
+NOTE-subscriber will only get added to ALL SUBSCRIBER list after one email is sent
+
+***************************
+Unsubscriebe-
+Unsubscribe Management- at list level and Global level
+
+Global Unsubscribe-Marketing cloud
+Unsubscribe all/master unsubscriber-marketing cloud Business account of that organization
+List Unsubscribe-Publication list,subscriber list
+
+
+Method-All subscriber list (perticulary going to a subscriber and Unsubcribing),Import,Subscription center,profile center
+
+******************
+To create Email-there are two ways FROM email or by Content Builder,
+first you can make the email template then you can send the email
+
+Go to Email-->Content--> create email
+or
+Content Builder-->Content 
+
+Local-->It is visible to the Current Businness Unit people
+Shared-->Across entriprise,specific Businness unit
+
+Set Edit permission-
+View And Send-
+Edit Locally-Edit and send to perticular BU
+Edit Globally-edit the email and will appear in All BU
+
+********************
+Create--> email template(select the Tmplate)
+Once our email template is ready: Create-->email message-->Create Email (Template,template+Amp,HTML,HTML+APM,Text Only,Existing Email)-->Save and send-->Select the audiance(From dataExtension)-->send it imediately/scheduled it
+
+***********
+A/B testing-
+template -1
+template-2
+
+we design 2 template and sent it to 2 different costomer,then will analyse which email will do better and will select that email
+
+A/B testing-->Create-->Test Management (define template)-->Audiance-->Winner (between 2 templates)-->Send Mangemnet
+
+We can also define how many Audiance will receive email-1 and how many will receive email-2
+
+Winnner-
+-Heigher unique open rate
+-Heigher unique click through rate (CTR)
+
+Evaluation period-->how many days u want to calculate the result for
+
+Send Management-imediately/Scheddule
+	Send Winner Email to remainder
+	from Option (Select from Name and Address)
+
+
+***********
+Email Best Practices-
+1-Create a Clear Goal-Your email should be specific to that product only
+2-Segment your audiance-if your product is bat,then it will only be sent to male audiance
+3-Create a Compelling heading(attractive heading)-Subject or Preheader
+4-Pay attention to timing-Scheduled Emails
+5-Optimised for your brand-Logo,Your quote
+6-Focus on design and compatibility
+7-Create a clear call to action(CTA) page
+8-Effective landing page
+9-Set up Tracking
+10-Test again and Again
+
+**********
+CAN SPAM Compliance-
+They are the policy,which will stop Hatred words,etc etc
+Guidlines-
+-Accurately identify the sender in the Header information
+-Use a subject line that accurately represents the content of the email
+-identify the message as an advertisement
+-include your physical mailing address
+-Make it eassy for subscribers to Opt-out of the email services
+***********
+email Deliverability best practices-
+-bounce and purge
+-manage email frequency
+-spam filters
+
+****************
+Marketing automation-
+Journey Builder-will create the complete journey of customer,by using Autoation process that u have creaded in Automation Stdio
+
+Automation Studio-
+Starting Sources
+Activities
+Flow
+
+Starting Sources-Starting point
+Schedule-Start Imidiately or at perticular Time
+File Drop-This is related to FTP (File transfer prototype)
+
+Whenever the file is updated from External System always create a compresed zip file.
+-This file is unziped / decrypts files and place it in SFMC in
+SFMC Safehouse(.csv),(It is a black box)
+-File Data updated in DE(Salesforce Marketing cloud)
+
+FILE TRANSFER-INBOUND
+
+External System-->FTP (ZIP)-->SFMC Safehouse-->File data updated in DE
+**********
+Similarly We can do File transfer Activity-Outbound-
+Only reversal of direction
+
+Data Extension-->SFMC safehouse-->FTP (.zip)-->external ystem/process
+
+Activities-What activity to perform
+
+**************
+Data Filter Activity-
+Source Data Extension-->data Filter-->Data Extension/list
+
+When we want to extract data from (Data Extension) Source but with some filtered data then it overwrites the data and will make the list
+
+If we have multiple Source Data Extension and we want to get the data from this data extension,then we will be using SQL query,it will also overwrite the data
+
+****************
