@@ -1,0 +1,335 @@
+Async & Await>>Promise>>callBack
+
+CallBacks Function-
+A callback function is a function passed into another function as an argument which is then invoced inside the outer function to compelet an action
+
+funciton a(xyz){
+}
+
+function b(){
+}
+
+a(b())
+
+******************
+Synchronous-
+console.log("Line 1");
+console.log("Line 2");
+console.log("Line 3");
+
+Output-1,2,3
+
+Asynchronous-
+Suppose we wanr ro print line 2 after 5 sec,
+-so we will rap the console.log("line 2"), into a function
+function(){
+	console.log("line 2");
+}
+-Now we want to print this line after 5 sec we use setTimeout function
+setTimeout(function(){
+	console.log("line 2");
+});
+
+********************
+There is a Flipkart website-were we have cart to add items
+-we have 2 apis, createOrder-which creates order
+			proceedToPayment-which procede to payment after creating order
+-There is a dependency between createOrder and ProceedToPayment
+
+so what we will do-
+const cart=["Shoes","pants","kurta"];
+
+api.createOrder();
+api.proceedToPayment();
+
+**********************************
+we will wrap up the proceedToPayment into a function and will pass it to createOrder api
+
+wraping-
+function(){
+	api.proceedToPayment();
+}
+
+passing-
+api.createOrder(cart, function(){
+	api.proceedToPayment();
+});
+
+this means we are giving the control to createOrder api TO call proceedToPayment api.
+-The twist is ,we dont even know that whether createOrder api will call the ProceedToPayment api or not, or it can call it multiple times
+
+*********************
+suppose we again have a api which is showOrderSummery()- which prints the summery
+-there is dependency between procedToPayment and showOrderSummery
+Example-
+api.createOrder(cart, function(){
+	api.proceedToPayment();
+});
+
+api.showOrderSummery();
+
+-Again What we will do is
+Wrapping
+function(){
+	api.showOrderSummery();
+}
+
+passing-passing to proceedToPayment
+api.createOrder(cart, function(){
+	api.proceedToPayment(function(){
+	api.showOrderSummery();
+		});
+});
+
+Here we are giving the control to the proceedToPayment method that it should call showOrderSummery
+-But the issue is we dont know that wheter it will call it or not,if it call it can call multiple times
+
+This is called as CallBack Hell, Prymide Of Doom,callback Inside Callback
+
+*****************************
+
+Promise's-
+Instead of giving control to other function ,we use  promise
+-we just create a promise variable/object..which has undefined data initially and later filled with some data
+
+Before promise-
+const cart=["Shoes","pants","Kurta"];
+
+createOrder(cart);	-->it take Cart,and generate some OrderId
+
+
+proceedToPayment(OrderId);	-->the order Id is passed here
+
+
+Wrapping-
+
+function(OrderId){
+	proceedToPayment(OrderId);
+}
+
+Passing-
+createOrder(cart, function(OrderId){
+	proceedToPayment(OrderId);
+});
+
+Here we are giving the control to the createOrder api/method to call the proceedToPayment Api/Method
+
+****************
+To avoid this-
+ const promise= createOrder(cart);
+
+initially promise is a empty object..
+{data: undefined}
+
+after
+{data: order details (orderId)}
+
+-Once we have data inside a promise then we will attach a callBack function using .then 
+const promise= createOrder(cart);
+
+	promise.then(function(OrderId){
+		proceedToPayment(OrderId);
+	});
+
+**************************
+suppose we have showOrderSummery() after proceedToPayment wha we can do is-
+
+wrap-
+function(){
+	showOrderSummery();	
+}
+
+attaching-
+const promise= createOrder(cart);
+
+	promise
+	.then(function(OrderId){
+		proceedToPayment(OrderId);
+	})
+	.then(function(paymentInfo){
+		showOrderSummery(paymentInfo);	
+	});
+
+what happens is we pipe the functions ,we have to take care that we always return a promise
+
+const promise= createOrder(cart);
+
+	promise
+	.then(function(OrderId){
+		return proceedToPayment(OrderId);
+	})
+	.then(function(paymentInfo){
+		return showOrderSummery(paymentInfo);	
+	});
+
+******************
+Prmoise has 3 stage-
+Promise Pending-when Created
+If we use .then (resolve)-fulfilled ///success zale tr he print karel
+if we use .catch (reject)-error	//failure zala tr he print karel
+
+Everything that we did was consuming part
+Now we will move it to Creating Promise-
+
+Everything that we did was consuming part-
+
+const promise= createOrder(cart);
+
+	promise
+	.then(function(OrderId){
+		return proceedToPayment(OrderId);
+	})
+
+
+Creating a Promise-
+resolve-fullfield then method will run
+rejected-failed catch matehod	will run
+
+function createOrder(cart){
+	const pr=new Promise(function(resolve,reject){
+		//we will write logic here
+		if(!validateCart(cart)){
+			const err=new Error("Cart is Not valid");
+			reject(err);
+		}
+		const orderId="12345";
+		if(orderId){
+			resolve(orderId);
+		}
+		
+	})	
+	return pr;
+
+}
+
+
+Resolve-promise approved
+Rejected-promise rejected
+
+*********************************
+
+const orderId="12345";
+		if(orderId){
+			resolve(orderId);
+		}
+
+we can put a resolve in setTimeout-just wrap the resolve Function in a function
+Wrapping-
+function(){
+	resolve(orderId);
+}
+
+
+if(orderId==12345){
+setTimeout( function(){
+	resolve(orderId)}, 3000);
+}
+
+***************************
+If Promise is Resolved --> .then is called
+If promise is Rejected --> .catch is called
+
+const promise= createOrder(cart);
+
+	promise
+	.then(function(OrderId){
+		return proceedToPayment(OrderId);
+	})
+	.catch(function(err){
+		console.log(err.message);
+	});
+
+**********************
+
+
+Instead of declaring promise like
+function createOrder(cart){
+const pr=new promise(function (resolve, rejected){
+	//programing logic
+});
+}
+
+ORRRRRR
+
+we can also wrtie as
+function proceedToPayment(orderId){
+	return new Promise(function(resolve, reject){
+		resolve("payment SuccessFul");
+	})
+}
+
+*********************
+There are 4 promise Apis-Parallel Api Calls
+Promise.all()
+Promise.allSettled()
+Promise.race()
+Promise.any()
+
+1)Promise.all()-It takes the array of all Promises (Itterables)
+Promise.all([p1,p2,p3]);
+Makes call to P1,P2,P3 and get the result
+
+-We are consedering P1,p2,p3 are all successor,and the time it takes is 3s,1s,2s
+So it will return the result as an array
+[result1, result2, result3]
+-We will get this result after 3 sec,that means we have to wait for the max time then it shows the result
+
+
+-As soon one of the promise from P1,p2,p3 gets regected then Promise.all will through an error
+-if p2 gets error
+-the error will be same as p2 as a result in promise.all()
+
+-if p2 take 2 sec to throw an error,then Promise.all() will also takes 2 sec to through the same error
+
+**********************
+Promise.allSetteled()-
+if i make 10 api calls and if 2 fails ,and i want a result from those 8 api calls...then we will be using Promise.allSetteled()
+
+-p1,p2,p3
+for success
+
+the result will be same as Promise.all();
+
+-But what if p2 gets rejected in 1sec, this will still wait for all promises to Success(settled)
+after 3 sec
+(result 1,error 2 , result 3)
+
+************************************
+
+Promise.raze([p1,p2,p3])-
+ITs a race the person who finishes first wins the race
+
+For success case
+P1-solved in 3sec
+p2-solved in 1sec
+p3-solved 2sec
+
+as sson as promise is solved
+
+-the result will be the value of the winner
+(result 2)
+
+
+For failure-
+p1-3sec
+p2-5sec
+p3-2sec	fails
+
+Error will be thrown as result (erorr p3)
+
+**************
+Success Seaking-whenever it is successful it will return
+Promise.any([p1,p2,p3])-very much similar to race
+-it will wait for the promise to get first success
+
+(result 2)
+
+-if failure-if p2 was rejected,if p3 is successful 
+the result will be p3
+
+-if all 3 fails ,then it gives the aggregate errors of all the 3 promises
+[Aggregate error]
+[error1, error2, error3]
+
+
+

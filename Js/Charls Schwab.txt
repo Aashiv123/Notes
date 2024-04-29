@@ -1,0 +1,100 @@
+Lead-Raw data...unqualified data
+Opportunity-->ongoing process
+
+We do development in Aursa New
+Then We send that development to Q/A-->Q/A team will do testing
+They will revert back to us if there are any changes,if there are no changes the development goes to PO
+PO will push the story to STAGING
+Staging will revert back to us that everyting is working fine
+
+We have to create release notes-->which includes childish explanation of every step Production has to take(Including ScreenShots)
+
+Work Aursa
+Investor Application-->
+Client--> this are the peoples/company which will have 5-6 peoples under them,so we call this peoples as Lead
+Client and lead shares lookup-relationship between them
+
+lead can be seperate also,need not be assigned to the client
+
+When we have perticular permission then only we can see the real page of Lead,which includes certain parts(some part are not Editable,below this part one part is completely editible,to the right of this page we have the new lead/new Log page,below this page we have the History of the lead,How many leads are generated on this month and also we have see the leads generated throught the lifetime)
+
+new Log and New Lead are basically same
+
+We can see the complete history of the lead in the right most part of the lead, which basically gives you the flow of the lead ,how it got converted from lead to opportunity
+
+Currently we are working on the HouseOld data(HVCC),where the requirement is that: We have a house (main sourse),which has some assets (like plots,lands,gold),Now if one person(Singleton) from that family gets seperated from this house(main Sourse)...then this assets must be divided for this if house(main sourse) has assigned Consultant/advisors for them then that same consultant/advisors will be assigned to the person who got seperated
+
+Houseold-->is the object Which has some fields, also we can connect this houseold to the leads and opportunities 
+
+There are two Visual studios-
+Enterprise and Org
+
+Whatever Q/A testers will change that same will be cloned in the Enterprise Visual studio,This enterprise org will have a branch, which we will have to link it in jira
+
+jira-were we can see the stories,We can get To do Stories (based on the call)
+Bamboo-will track the chnages or the flow of the story, how it is going and all(Gives You the pipeline)
+BitBucket-It helps developers store and manage their code as well as track and control the changes to their code
+
+
+
+*********Flow
+CONFLUENCE PAGE
+
+Start-->check whether the lead has some clients or not-->If it does has clients then it retrive the information of client,Opportunity and lead related details-->even if it does not have Client then also it retrives this datas-->thenit check for 2 way comunication and 21 days activities-->then it checks for the single way comunication (fax) -->then it checks for the opportunities last activity-->end
+
+1 Apex Trigger and 4-5 Apex Methods For this flow
+
+Pic Of lead 
+-There is RPS DataBase..Where contacts details are present such as Contact (phone number,address, etc)
+-there is IDW (RPS data is send to IDW when then fetched By IDL Lead DataBase)
+-IDL Lead Database,wehere Data of the lead is saved
+-then lead is created and sent to Schwabs Cleient
+
+Future Flow
+-RPS database-->Orchestrator-->IDL lead DataBase-->SFMC-->SFDC
+-In SFDC the leads are hidden because of the Data Compliances/Confridenciality
+
+
+If we want to fetch complete data from the RPS dataBase it will take lot of time,
+So as to Compensate with this we have designed a Button present in the IDL (lead DataBase) UI,
+-which creates  CustId (also it retrives some data from Rps)
+-then this data is send to the salesforce
+-if the CustID is already present then it Gives an alert
+
+SID-Routing Of a Lead
+There are some Profiles 
+-Routing Adminstrator- Create ,edit, delete, route Leads
+				-it can Analyse lead
+
+-Schwabs Rep- Create lead
+		-can take the lead Assignment
+
+-Marketing Cloud- Create Lead
+
+-Customer -Assignee
+		-Reassign work to assignee after time has passed
+
+
+Routing Adminstrator has a greta responsibility cuz he can manipulate the lead ,so we have povides some check ,such as lead Number and some othe field should not be Null
+
+-They have searched for the solution but didt find it on Omni-channels, App Exchange as it is more complex
+-So they have developed 2 new Objects
+1)Routing_rules
+2)routing_rules_parameters
+
+Routing_rules should be less then 100
+Routing_rules_parameters should be less then 5 >500
+Leads generation is 250k anually
+
+
+Flow Of lead With Routing
+-In Lead Object routing Rules is a lookUp relation
+-If a Routing rules are required it checks for the Need
+
+Lead-->does it need Routing Rules-->It will check for the parameters-->assign Parameters
+Lead-->if it does not need anything-->then Default Routing rules are applied
+
+Assigning to Asignee-->
+team--> last Actvity-->if its not done-->roundRobin-->Assign
+client-->
+etc..

@@ -1,0 +1,129 @@
+Why we Need Integration?
+when we need Connect 2 or more system together.So that it acts as one server
+eg-Google server and salesforce server talking with each other
+
+API-Application Programming Interface
+eg-For example, when you use an app on your phone, the app connects to the internet, grabs data from a server, and presents it back to you in a readable format. With the right API, this whole process should happen without a hitch.
+
+When we talk about API,we will be talking about 2 aspects-Timing and Direction
+Timing-Synchronous and Asynchronous 
+Direction-Inbound and Outbound
+
+Inbound Integration: An external system initiates contact with Salesforce. Outbound Integration: Salesforce initiates contact with an external system.
+
+
+************************************************
+Integration Fundamentals-
+Callout/Request
+Server A and Server B- Server A wants to request something from Server B ,this is called as callout or Request
+
+Api EndPoint-
+server b has web address- www.information.com
+server a wants to reach/call to b...this is called as api Endpoint
+
+This call will be hapenning over the web or http callout
+
+Autheriotion-
+before making a call,it will check that wheter the website is autherized or not,then only it will make a call
+
+
+
+************************************************
+Rest Api-
+REST API
+This focuses on data-based operations:
+
+-GET to query a database-retrive the data
+-POST to create a record-insert new data
+-PUT to update-insert new data or update existing data
+-PATCH-update existing data
+-DELETE-delete existing data
+
+REST API is best for web or mobile applications. Regarding data formats, it uses XML or JSON. JSON works better with data and is best for web or mobile applications. This means that REST doesn’t use much bandwidth and is easily consumed by web browsers.
+
+In terms of timing, REST is synchronous. For example, you send a POST request to create a record in Salesforce and you will receive a response as to whether it was successful or not.
+
+Salesforce Workbench is a suite of tools that allows you to interact with Salesforce using APIs.
+
+*****************
+SOAP-
+SOAP API was more commonly used by older systems, but you may still come across it. It’s best for system-to-system integrations, back-end system communication,
+
+-It works with XML files
+-it tends to be slower and use more bandwidth than REST
+-asynchronous, meaning that it doesn’t need to wait for a response and can continue with other processing without causing blocks.
+--It is more secure then rest
+
+*********************
+HTTP response Status-
+Informational responses (100 – 199)
+Successful responses (200 – 299)
+Redirection messages (300 – 399)
+Client error responses (400 – 499)
+Server error responses (500 – 599)
+
+**********************************
+http callout -similar to postman
+we need to go to Remote site-and pase the link over there for authorization-
+https://api.spoonacular.com
+
+Http http=new Http();
+httprequest request=new httprequest();
+request.setEndpoint('https://api.spoonacular.com/recipes/random');
+request.setMethod('GET');
+HttpResponse response=http.send(request);
+
+if(response.getStatusCode()==200){		-->200=success
+	System.debug('response '+response.getBody());
+}
+
+*****************************
+if a website has only APi key=vaosyubvnkqeiry162574bria
+then will be passing this key in the URL itself-
+https://api.spoonacular.com/recipes/random?apikey=vaosyubvnkqeiry162574bria
+
+just add ?apikey=51bybcs576839;
+
+******************88
+eg-
+Http http = new Http();
+HttpRequest request = new HttpRequest();
+request.setEndpoint('https://th-apex-http-callout.herokuapp.com/animals');
+request.setMethod('GET');
+HttpResponse response = http.send(request);
+
+// If the request is successful, parse the JSON response.
+if(response.getStatusCode() == 200) {
+    // Deserialize the JSON string into collections of primitive data types.
+    Map<String, Object> results = (Map<String, Object>) JSON.deserializeUntyped(response.getBody());
+    // Cast the values in the 'animals' key as a list
+    List<Object> animals = (List<Object>) results.get('animals');
+    System.debug('Received the following animals:');
+    for(Object animal: animals) {
+        System.debug(animal);
+    }
+}
+
+
+JSON.deserializeUntyped - Deserializes or reconstructs the object model from the specified JSON string into collections of primitive data types. Here the collection is Map<String, Object> 
+********************
+Rest Annotation-Use these annotations to expose an Apex class as a RESTful Web service.
+
+@ReadOnly
+@RestResource(urlMapping='/yourUrl')
+@HttpDelete
+@HttpGet
+@HttpPatch
+@HttpPost
+@HttpPut
+
+***************
+creating authorization Header
+String username='admin';
+String password='supersecret';
+blob headerValue=Blob.valueOf(username+':'+password); 
+String authorizationHeader='BASIC'+EncodingUtil.base64Encode(headerValue);
+request.setHeader('Authorization',autherizationHeader);
+
+
+Blob- is used to deal with creating PDF or String

@@ -1,0 +1,554 @@
+Core Js-It is a "single threaded" "Synchronous" Language
+Angular Js-Angular is a primary choice to learn as its market acceptance is vast (Complex Web Applications)
+React Js-Allows developers to build complex user interfaces with ease
+Node Js-Both Front end and Back end language (Used for High performance applications)
+
+Single Threaded-Executes one command at a time
+
+Multi Threaded-Executes multiple command at a time
+
+-Global Execution Context is created
+-Which has 2 parts, Memory -which store variables and Functions, Code
+-Variable-var,num,etc
+-Function-The code is written as it is
+
+Phase-1
+var a=2;
+function sum(num){		-->Num-parameter
+var ans=num*num;
+return ans;
+}
+var sumation= sum(a);		-->2-argument
+
+Memory			code
+var-undefined
+funstion sum(){...}
+sumation-undefined
+
+
+Phase-2
+Memory			code
+var=2;		memory		code
+			num-undefined			
+			ans-undefined
+sumation-undefined
+
+phase-3
+memory			code
+var=2;		memory		code
+			num-2
+			ans-4
+sumation-4
+
+
+-Phase 3,2,1 will be deleted
+-Call Stack is always created-In the bottom Global Execution is Created
+-Whenever a Function is Called (New Global Execution is created it is put above the Main Global Execution)
+	new Global Executino
+	Global Execution
+		This is also called a push functin when Inserted
+		This is also called a pop functin when deleted
+
+Call Stack Names-Execution Context, Program Stack, Control Stack, Runtime Stack,Machine Stack
+
+****************************************	
+
+Hosting Js-You can access the variable in function even before u have initialied it or put some values in it
+	eg-	var x=7;
+		function sum(){
+			console.log("Hello Aashiv");
+		}
+
+		sum();
+		console.log(x);
+
+OUTPUT-	Hello Aashiv
+		7
+
+eg-		sum();
+		console.log(x);
+		
+		var x=7;
+		function sum(){
+			console.log("Hello Aashiv");
+		}
+
+OUTPUT-Hello Aashiv
+	 Undefined
+
+
+eg-		sum();
+		console.log(x);
+		
+		function sum(){
+			console.log("Hello Aashiv");
+		}
+
+
+OUTPUT-Hello Aashiv
+	 Not Defined -Error x is Not Defined
+
+
+eg- function sum(){
+			console.log("Hello Aashiv");
+		}
+	console.log(sum);
+
+OUTPUT-sum(){
+			console.log("Hello Aashiv");
+		}
+
+
+eg-	console.log(sum);
+		function sum(){
+			console.log("Hello Aashiv");
+		}
+
+OUTPUT-	sum(){
+			console.log("Hello Aashiv");
+		}
+
+
+What if we try to do it with arrow function
+eg	sum();
+	var sum=()=>{
+		console.log("Hello Aashiv");
+	}
+
+OUTPUT- Error-Sum is not a function
+****************************************	
+
+Shortest Code of js is A "Blank JS"-even if we dont write anything in a code we can still see a Java engine working in the back...which pops a Window
+
+What is Window??
+-It is a big object with lot of Variables and Methods created by js Engine into the Global Area
+-Whenever a Js is created a Global Execution is created, with this "Window" is created
+-Js also creates a "this" Keywrod- In global Level "this" keywords points towards the Window Object
+
+-At global Level this===window		(=== TypeOf)
+
+Anything which is not inside the function is called global function
+
+eg var a=10;
+	function sum(){
+		var b=8;
+	}
+
+-a will be present inside "window"
+-to access a we can write console.log(window.a); or console.log(a); or console.log(this.a);   =10
+
+*************************************
+
+log a;
+console.log(a);	undefined
+a=10;
+console.log(a);	10
+a="Aashiv";
+console.log(a);	Aashiv
+
+-That is why js is lossely typed language,which means variables can take the string value,number value
+
+*****************************************
+Scope-where can i access the variable
+function a(){
+	var b=10;
+	function b(){
+		console.log(b);
+	}
+}
+
+function b is inside a that means b is in lexical environment to a,similarly a is in lexical environment to global scope
+
+-function b(){} has its local memory
+-it will look for the value of b in its local memory
+-if it couldnt find then it will move to its parent laxical environment a
+-if it finds b=10,then it will print b as 10
+
+-This whole chain of lexical environment is called as Scope chain
+
+That means c has an access the laxical environmet of a,c is also enclose inside a function a,this is know a s closure
+
+*********************************
+Let and Const Declaration are hoisted,they are basically temporal dead zone
+
+console.log(a);	-->undefined
+var a=10;		--> allocated to global which means window
+
+console.log(a);	-->error variable not defined
+let a=10;		-->hoised a=undefined but allocated to different space ()
+const a=10;		-->hoised a=undefined but allocated to different space ()
+
+
+Var a=10;
+var a=100;	-->possible
+
+Let a=10;				let a;
+let a=100;	-->cant do		a=100;	-->it is fine
+
+const a;				const a=10;	-->it is fine
+b=10;		-->Syntax Error
+
+*************************
+
+Syntax Error
+let a=10;
+let a=1000; -->redeclaration
+
+Refrence Error
+console.log(a);	-->refrence error
+let a=10;
+
+
+************
+
+what is a Scope- {} ?
+{
+	var a=10;
+	console.log(a);
+}
+-scope include multiple js statements and group them together
+
+{
+	var a=10;		-->global Scope
+	let b=20;		-->block Scope(seperate scope)
+	const c=90;		-->block Scope(seperate scope)
+}	
+-after execution the let and const gets deleted we cannt access it,we can only access it inside a block
+
+eg-Condition for var
+var a=100;
+{
+	var a=10;
+	let b=20;
+	let c=80;
+		console.log(a);		-->a=10 shadowed the a=100,the output will be 10
+}
+	console.log(a);			-->a=10 a value is replaced now
+
+
+eg-Condition for let
+let b=10;
+{
+	let b=15;
+	console.log(b);		-->b=15
+}
+	console.log(b);		-->b=10
+
+****************************
+Shadowing also works for functions
+
+let c=100;
+function x(){
+	let c=11;
+	console.log(c);	-->c=11
+}
+console.log(c);		-->c=100
+
+***************************
+Closure - a function enclose inside a its parent lexical environment
+eg-
+	function a(){
+		var b=10;
+		function c(){
+			console.log("The value of b- "+b);
+		}
+		c();	-->calling a function
+	}
+
+	a();		-->calling a function
+
+-In JavaScript we can pass a function to a variable
+-we can pass a function inside a function
+-we can also return a function inside a function
+
+eg-
+function a(){
+	var b=function c(){
+
+	}
+}
+
+eg-
+a(function c(){
+	console.log("hello");
+	});
+
+eg-
+function a(){
+		var b=10;
+		function c(){
+			console.log("The value of b- "+b);
+		}
+		return c;
+	}
+
+var z=a();	
+console.log(z);
+z();
+
+OUTPUT-function c(){
+			console.log("The value of b- "+b);
+		}
+
+if we try to print z-then we still get 7 as OUTPUT,because the function does not forget its lexical space
+
+	or
+function a(){
+		var b=10;
+		return function c(){	-->just add return keyword
+			console.log("The value of b- "+b);
+		}
+		// return c; -->instea do this
+	}
+
+
+Uses Of closure-
+	-Module Design pattern
+	-setTimeoutts
+	-iterators
+	-maintaining state in async world
+****************
+setTimeout(); Function-we can pass function inside a setTimeout funciton
+
+function x(){
+	var i=1;
+	setTimeout(function(){
+		console.log(i);
+	},2000);
+}
+x();	-->calling function
+
+OUTPUT--> after 3 sec it will print 1
+
+-we pass an anonymous function as a callback function to the setTimeout() method. This executes this anonymous function 2000ms later.
+
+************
+CallBack Function-A callback is a function passed as an argument to another function
+This technique allows a function to call another function
+A callback function can run after another function has finished
+
+First Class Function-
+A programming language is said to have First-class functions if functions in that language are treated like other variables. So the functions can be assigned to any other variable or passed as an argument or can be returned by another function. JavaScript treats function as a first-class citizen. This means that functions are simply a value and are just another type of object.
+
+*****************
+
+Function statement-
+function a(){
+	console.log("a called");
+}
+a();
+
+Function Expression- also known as Function Declaration
+var b= function b(){
+
+	}
+b();
+
+Anonymous function-a function that has no name
+function() {			()=>{
+    // Function Body			//function body
+ }						}
+
+****************
+CallBack Function-passing function as a argument to another function is called as callback function
+	-callback are very powerfull tool
+	-It gives us the power of Asynchronous World in the synchronous langauge(single threded)
+	-First main function executes then callBack function executes
+	-and is invoked or executed inside the other function.	
+
+if there is a function that takes 30-40 sec time it blocks the Call Stack,by that time nothing can be called ,that is why we should use Asynchronous Function,this is also called a main thread Blocking
+
+EventListner-whenever we create attachEventListner it form a closure with EventListner,it takes up lot of memory that is why we remove event listner we r not using them
+
+whenever attachEventListner is removed then the variables attached to it will get garbage collected
+
+function operation(callBack){
+	console.log("Sart of Operation");
+	setTimeout(function(){
+		callback();
+	},3000)
+	console.log("End of operation");
+}
+
+function callBack(){
+	console.log("callback executed");
+}
+
+operation(callBack);
+
+
+-If we pass callback inside a callback inside a call back it creates a "CallBack Hell or Parymid Doom",so to eliminate this we go with Prmoise.
+
+eg-
+function getData(dataId){
+	setTimeout(function(){
+		console.log("Data "+dataId);
+	},2000);
+}
+
+getData(1);
+getData(2);
+getData(3);	-->this 3 data will print exactly after 2 sec,so to avoid this we pas the 			getNextData
+
+
+function getData(dataId){
+	setTimeout(function(){
+		console.log("Data "+dataId);
+		getNextData()
+	},2000);
+}
+
+
+*********************
+
+Document and Windows-
+Document-HTML
+	-it is an object of window
+	-we can not access windows object properties inside the document
+
+Window-JS
+	-it is an object of browser
+	-we can access document object properties inside the windows
+
+if we want some superpower inside a js we will be using "Web Apis"
+	-for time we will be using window.setTimeout()
+	-for Dom Api(HTML) window.DOMapis
+	-for netflix server call window.fetch()
+	-for localServer window.localStorage
+	-for console window.console.log
+	-for location we use window.location
+
+*************
+Event Loop-
+whenever we use eventListner -->it created a CallbackFunction which is attached to a event(click)
+Once the Global Execution is deletd in Callstack .....Event Loop watched Callback Queue which consists of Callback function...
+if it see Callstack is empty then it sends Cb which was in callback Queue to Call Stack
+
+eg-
+document.getElementById("bssa")
+.addEventListner("Click", function(){
+	console.log("callBack");
+});
+
+**********
+when we use fetch.. it fetches the data from website/make a apiu clal to the website
+which will then return a promise(.then), 
+which means after this promise is completed then execute this callBAck function
+
+fetch("https://api.netflix.com")
+.then(function cbF(){
+	console.log("CB Netflix");
+});
+
+****************
+Prmoise,async and await-
+-Promise are used to do Async operations
+-A promise is a empty object which holds some data
+-"Producing code" is code that can take some time
+-"Consuming code" is code that must wait for the result
+-A Promise is an Object that links Producing code and Consuming code
+
+Suppose there is a Cart which is an array,which holds String data such as:
+let card=["PS5", "Shirt", "Shoes"];
+
+CartOrder()-->which will return us Order Details such as (ORder ID,etc),
+ProcedeToPayment()-->which will be taken place after we get the order id.
+
+CardOrder(Cart);
+procedeToPayment(OrderId);
+
+OlderMethod-We were passing callBack into a function
+Const let card=["PS5", "Shirt", "Shoes"];
+CartOrder(Cart);
+procedeToPayment(Orderid);
+
+procedeToPayment will be called inside a callBack Function
+function(){
+	procedeToPayment(Orderid);
+}
+
+this callBack function is passed to CreaOrder
+createOrder(cart, Function(orderId){
+	procedeToPayment(Orderid);
+});
+
+
+New Method-use Promise (We are attaching CallBack to a Promise Object using .then)
+ Let Promise =new Promise(Function(resolve,rejected){
+		if(arrived){
+			resolve("Driver arrived");
+		}else{
+			reject("Driver Cancled");
+		}
+	});
+
+Promise
+.then(function(value){
+	console.log(value;)
+})
+.ctach(function(error){
+	console.log(error);
+})
+.finally(function(){
+	console.log("");
+})
+
+State="Pending"		resolve("Done") 		state="fulfilled"
+result=undefined						result=done
+
+
+state="pending"		reject(error)		state="rejected"
+result=undefined						result=error
+
+*********************
+Promise chain- always use return while promise chaining
+createOrder(cart)
+	.then(function(orderId){
+		return proceedToPayment(orderId);
+})
+	.then(function(paymentInfo){
+		return showOrderSummery(paymentInfo);
+})
+	.then(functoin(SummeryInfo){
+		return updateWalletBalance(SummeryInfo);
+})
+**********
+Asyncfunction-It allows us to write Promise-base code as if it was synchronous and it checks that we are not breaking the executino thread.
+	-it will alwars return a value
+
+
+Await function-Await function is used to wait for the promise result
+	-it could be used within the async block
+	-Await is always used inside the async Function
+
+
+
+
+eg-
+const getdata= Async function display( ){
+			let data="Hello";
+			return data;
+		}
+getdata().then(function(data){
+	console.log(data);
+	})
+
+
+eg-
+async function getData() {
+  const response = await fetch('https://api.example.com/data');
+  const data = await response.json();
+  return data;
+}
+
+****************
+querySelector - To access the first Element of the DOM Tree
+and querySelectorAll- To access all elements of similar type in DOM tree
+
+-we use querySelector with Document eg(Document.querySelector)
+-same with querySelectorAll eg(Document.querySelectorAll)
+
+let e1=document.querySelector("div");
+let els=document.querySelectorAll("div");
+
+****************

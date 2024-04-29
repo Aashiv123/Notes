@@ -1,0 +1,258 @@
+1-LWC-Lightning web component
+
+2-LCF-Lightning Component framework
+
+3-What is Salesforce LWC?
+The term LWC stands for Lightning Web Components. It is used to develop custom HTML elements with the help of JavaScript and HTML tools. 
+
+4-Expand SLDS.
+The term SLDS stands for Salesforce Lightning Design System.
+
+5-SFDX/DX-Salesforce Developer Experience
+
+6-How is LWC different from Aura?
+Lwc-It is a modern framework which uses web stack tools
+	-It has improved performance and simplicity
+
+Aura-it is a older framework which used HTML and JS
+	-it is feature rich but also complex
+
+7-Which company introduced LWC to the worldwide software market?
+Salesforce introduced LWC to the worldwide software market
+
+8-What do you mean by Salesforce Lightning?
+Salesforce Lightning is a component-based framework, for Salesforce App development. Its main objective is to simplify the process of development for those who do not have proper experience in programming.
+
+9-What is the use of a Lightning Component Framework?
+Lightning Component Framework is a user-interface framework that is used to develop dynamic web applications for both mobile and desktop users.
+
+10-What are the key features of Lightning Web Components?
+-Improved performance
+-Simplicity easy to use
+-Capiblity with other web standards
+
+11- In how many ways can lightning components be made?
+-Aura Components model, and 
+-Lightning Web Components model.
+
+12-What are the Types of Lightning Components
+Standard Lighting Components These come pre-installed in your salesforce object page layouts. You can hide them, or choose not to use them, but you can’t get rid of them. That’s why they are called Standard Lighting Components.
+
+Custom Developed Lighting Components These are advanced lightning components and they are developed based on custom needs of the organization.
+
+AppExchange Lightning Components Some of the components you might need, may have already been built and are available in the AppExchange marketplace. You just need to install them
+
+13- Mention some of the types of events of Salesforce Lightning components.
+-Component Event
+-Application Event
+-System Event
+
+14-Do you think Aura Web Components and Lightning Web Components can coexist together?
+Yes, both Aura Lightning components and Lightning Web Components can coexist together.
+
+15-Can LWC be used outside of the Salesforce platform?
+Answer: Yes, LWC can be used outside of Salesforce on any platform that supports modern JavaScript, with the LWC Open Source version
+
+16- What is the use of Visual Building tools?
+These Visual Building tools provide drag-and-drop features making app development quicker and easier.
+
+17-What are the different Lightning page types?
+Home Page
+App Page and 
+Record Page
+Embedded Service Page
+
+18-Can LWC be used on any standard Salesforce page layout?
+Answer: Yes, LWC can be used on most standard Salesforce page layouts by adding the component to the page through the Lightning App Builder.
+
+19-Describe the file structure of Lightning Web Components.
+myComponent.html
+myComponent.js
+myComponent.js-meta.xml
+myComponent.css
+myComponent.svg
+
+20-What is the use of the Salesforce Lightning Design System?
+Salesforce Lightning Design System is used to develop web applications with great lightning experience, without writing a single line of code in CSS3.
+
+21- What is the use of the Salesforce Lightning Design System?
+Salesforce Lightning Design System is used to develop web applications with great lightning experience, without writing a single line of code in CSS3.(I gives font,colour palet)
+
+22-What are the rules to be followed while naming files?
+The names of the file must begin with a lowercase letter.
+The name of the file must contain only alphanumeric or underscore characters.
+The name of the file must be unique in the namespace.
+The name of the file must not have whitespaces in it.
+The name of the file should not end with an underscore. 
+The name of the file should not contain two consecutive underscore      characters.
+The name of the file should not contain a hyphen. 
+
+23-Mention some disadvantages of Lighting Web Components.
+It does not support the LEX console.
+LWC does not provide two-way binding
+LWC restricts the usage of Email templates 
+
+24-What does a component bundle contain?
+Style-Style of the component
+Renderer-Renderer to override default rendering
+Documentation-A description,sample code
+Helper-js function that can be called from any js
+Controller-handle events (controlls events)
+
+25-What are the advantages of using Lightning Component Framework?
+It provides out-of-the-box components
+Rich Custom Component Ecosystem
+Fast Development
+Browser friendly
+
+26-Is there any possibility of having multiple wire methods in Lightning Web Component?
+Yes, there is a possibility of having more than two wire methods in Lightning Web Components.
+
+27-List out the sequence of Application event propagation.
+Event fired		(aag lagli)
+Capture Phase	(photographer captures it)
+Bubble Phase and 	(viral the video)
+Default Phase	(Shanta )
+
+28-How to iterate through the list in LWC?
+Use for: each
+Iterator
+
+29-List out the tools present in Salesforce Lightning.
+Lightning App Builder
+Lightning Process Builder
+Lightning Schema Builder
+LCf
+
+30-What is Lightning Process Builder?
+it is a tool in Salesforce lightning and it is used to create visualizations and automate processes
+
+31-What is the use of Salesforce Developer Experience?
+It is a set of tools that are used to improve the developer’s experience of working upon the platform.
+
+32-true or false?
+Statement: Lightning Web Components work faster than Aura components.
+True
+
+32-Why does LWC runs faster then Aura components?
+Normally, the lightning web components work faster than aura components. This is because due to the absence of an abstraction layer, LWC is a lightweight framework built using web stack tools such as HTML and JavaScript. 
+
+33-How do Lightning Web components communicate with Aura components?
+There is a possibility that Aura components communicate with Lightning Web Components with the help of Public APIs and Events
+
+34-True/False
+Statement:Lightning Web Components can be embedded within Aura Components.
+
+True, Lightning Web Components can be embedded within Aura Components whereas the reverse cannot happen. 
+
+35-How to ensure FLS while working with Lightning Component?
+Lightning Data Services (LDS) already ensures (FLS)Field Level Security and we can also use into the Apex using isAccessible, isCreateable, isDeleteable, isCreateable and etc methods of Schema class.
+
+36-Is Lightning an MVC framework ?
+No, it’s a component-based framework.
+
+37-Is there any limit on how many components to have in one Application ?
+No
+
+38-What is the difference between Visualforce Components and Lightning Components ?
+Visualforce components are page-centric and most of the work is done on the server. Lightning is designed from the component up, rather than having the concept of a page as its fundamental unit. Lightning Components are client-side centric, which makes them more dynamic and mobile friendly
+
+39-How do you handle mobile responsiveness in LWC?
+Mobile responsiveness in LWC can be managed using standard CSS media queries and flexible layout systems like CSS Flexbox or Grid.
+
+40-What are best practices for CSS styling in LWC?
+-keeping styles scoped to the component, 
+-leveraging CSS custom properties for theming, 
+-avoiding overly complex selectors.
+
+41-Describe the process of creating a dynamic table in LWC that allows users to edit data inline.
+I’d create a table using HTML in LWC, use JavaScript for handling inline edits, and update the Salesforce records using Apex or wire service calls.
+
+42-How would you ensure the LWC component you developed is mobile-responsive?
+I’d use CSS media queries, test the component on different devices, and ensure it adapts to various screen sizes and orientations.
+
+43-How do you manage CSS styling in LWC?
+CSS in LWC is scoped to the component. 
+Global styles can be applied using Salesforce Lightning Design System (SLDS), and 
+CSS variables can be used for dynamic styling.
+
+44-How to select specific element of HTML in LWC
+for Single/first Element= document.querySelector(H1);
+for Multiple elements= document.querySelector(div);
+
+45-What is the purpose of the @track decorator in LWC?
+Answer: The @track decorator is used to mark a field as reactive. This means if the value of the field changes, the component will re-render.
+
+46-How do you handle events in LWC?
+Answer: Events in LWC are handled using event listeners. We can add an event listener in the template or use the addEventListener method in JavaScript.
+
+47-How do you ensure data binding in LWC templates?
+Answer: Data binding in LWC templates is achieved through the use of JavaScript expressions in the HTML template, enclosed within curly braces {}.
+
+48-How to access the sldc token?
+if i am having a blue colour Token as=brandAccessible
+-go to .css 
+	div{
+		colour:var(--lwc-brandAccessible);
+		background:white;
+	}
+
+49-How many SLDC tokens are there?
+Global Token-we can use it
+Internal-we cant use it
+
+50-What is Shared Css?
+if we want to apply same style to 2 component ,so instead of creating seperate css files ,we can create a LWC Comppoent,delete the HTML and js files,then crete a new css file (sameStyle.css), copy paste the same styling into this file.
+
+Now to access this file in another css,just write
+@import 'sameStyle.css' or 
+@import 'c/cssLibrary'
+
+51-how we can prevent a page from refreshing?
+just use handleForG(event){
+	event.preventDefault();
+}
+
+52-What is Composition in Lightning Web Components
+Component Composition in LWC refers to adding of a component inside the body of another component.Composition permits you to build complex components from simple building-block components.
+
+53-how to write a component into another component?
+child component "childComponent" = <c-child-component></c-child-component> 
+
+54-How to create shadow dom Api
+Use attachShadow JavaScript API to create shadow dom,
+eg const shadowRoot=this.attachShadow({mode:'open'});
+
+So any Operations that we perform inside a Shadow Dom will not leak outside its boundry (it brings encapsulation concept to HTML,which enables you to link a hidden seperated DOM to an element)
+-There will be shadow host(which will host the shadow DOM)
+-There will be Shadow root
+
+Benifits of Shadow Dom?
+DOM queries,
+Event propogation
+Css ,will not cross the boundry of shadow dom
+
+55-Why do we use innerHTML?
+it is also a Js Api to add style in that DOM tree,
+eg shadowRoo.innerHTML=`<button>Custom Button </button>`;
+
+56-Why do we use Getter setup in LWC
+first of all LWC does not support expression handling,which means we cannot put expression like we do it in Aura components,that is why we use get method and will return something
+
+57-What is setter in LWC
+Setter is something which we will receive from the compoent to the controller and we will change certain things
+
+58-How to access rendered element of a component?
+We use this.template.querySelector()      same as document.querySel()
+	this.template.querySelectorAll()
+	elemnt.template.querySelectorAll()
+
+lwc:dom="manual"
+add this directive to a native html element to attach an TML elemnt as a child
+
+59-how do you remove the setTimeInterval ?
+interval=window.settimeinterval(function(){
+},2000)
+justwrite window.clearInterval(this.interval)
+
+60-

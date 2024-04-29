@@ -1,0 +1,43 @@
+Async Await-
+Async is a keyword used before a function to make it async
+eg-Async always returs a promise
+async function getData(){
+	return promise;
+}
+
+eg-suppose we return a string
+async function getData(){
+	return "Aashiv";
+}
+
+then it will wrap "Aashiv" in a promise and return a promise
+
+**********************
+-Async and await are used to handle promises
+-Await can only be used inside a Async function
+-await keyword is used Always before the Promise, which will be stored in a variable
+
+Before-
+function getData(){
+	p.then(function(res){
+			console.log(res);
+	});
+}
+
+const p=new Promise(function(resolve,reject){
+	resolve("promise resolved");
+})
+
+getData();		--.>calling the method
+
+
+After-
+const p=new Promise(function(resolve,reject){
+	resolve("promise resolved");
+});
+
+async functoin handlePromise(){
+	const val=await p;
+}
+
+handlePromise();		-->promise resolved

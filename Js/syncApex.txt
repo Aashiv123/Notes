@@ -1,0 +1,83 @@
+Async Apex-
+1-Schedulable Apex
+eg-BackTracking
+
+public interface PurchaseOrder{		-->Interface-instance of a class
+	double discount();
+}
+
+Customer-0.5% discount and Employye-10% discount
+
+public class CustomerPurchaseOrder implements PurchaseOrder{
+
+	public Double discount(){
+		return 0.05;
+	}
+}
+
+public class EmployeePurchaseOrder implements PurchaseOrder{
+
+	public Double discount(){
+		return 0.10;
+	}
+}
+
+*********************Similarly
+
+global interface Schedulable{	-->Interface-instance of a class
+	execute(SchedulableContext SC){
+	}
+}
+
+global class ScheduleName implements Schedulable{
+	global void execute(SchedulableContext SC){
+	}
+}
+
+ScheduleName ab=new ScheduleName();
+String time='* * * * * ?';
+String jobId=System.schedule('Job Merging',time,ab);
+
+
+*************************************
+Queueable-we work with id's of sObject
+public interface Queueable{
+	public void execute(QueueableContext BC){
+		//code
+	}
+}
+
+public class Randomname implemets Queueable{
+	public void execute(QueueableContext BC){
+		//code
+	}
+}
+
+
+To add this class as a job to the queue,we can write
+Randomname ab=new Randomname();	-->
+ID rnjs=System.enqueueJob(ab); 	-->job is added to queue for execution
+
+To query the information about your job submitted -
+AysncApexJob jobInfo=[SELECT status,NumberOferrors FROM AsyncApexJob WHERE Id=:rnjs];
+**************************************
+Batch Apex-Database.batchable
+start(jobId)
+Gets invoked when the batch job starts. Returns the record set as an iterable that will be batched for execution.
+
+execute(jobId, recordList)
+Gets invoked when the batch job executes and operates on one batch of records. Contains or calls the main execution logic for the batch job.
+
+finish(jobId)
+Gets invoked when the batch job finishes. Place any clean up code in this method.
+
+***************
+public (Database.QueryLocator | Iterable<sObject>) start(Database.BatchableContext bc) {}
+
+String-
+ID batchprocessid = Database.executeBatch(reassign);
+
+Calling-
+AsyncApexJob aaj = [SELECT Id, Status, JobItemsProcessed, TotalJobItems, NumberOfErrors  FROM AsyncApexJob WHERE ID =: batchprocessid ];
+
+***********************

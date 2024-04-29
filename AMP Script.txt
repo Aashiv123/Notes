@@ -1,0 +1,116 @@
+AMP-Script
+Personalization Strings
+AMPscript Syntax
+Variables
+Conditions and loops
+Common Functions
+
+Personalization String-Syntax
+-It is a dataExtension field values in an Email
+%%First Name%%	-->field from dataExtension
+%%LAST Name%%	-->attribute strings
+
+Or it can Be Syntaxed as -
+%%==%%
+or
+%%[]%%
+or 
+<script runat="server" language="ampscript">
+	//ampScript
+</script>
+
+*************
+Function-AMPscript function are pure functions, which means they take some input and return an output based on the input.
+-You can move your function around your code making it easy to adapt
+
+AMPscript functions work in much the same way as they do in microsoft excel,that is parameters are set for a predefined function,which are interpreted and in turn return a value
+
+eg- SUM(1,2)
+%%==SUM(1,2)%%
+
+AMP Functions- %%==function==%%
+Char,Concat,IndexOf,IIF,Empty,Length,Lowercase,UpperCase,Mod,Now,ProperCase,Random,replace,Add,Trim
+
+***********
+AMPscript Variables-just like other language amp script has variables
+And this variables are Defined as @name
+
+How are this variables Declared= var @firstName, @lastName
+
+-if we declare this variables the value will be null
+-Now we will be setting some  value to this variables
+
+%%[var @firstName
+set @firstName= FirstName
+set @localDate = SystemDateToLocalDate(Now())
+set @promotionEndDate = '10/15/2018'
+]%%
+
+
+****************
+Now we will changing var values-
+eg-the value of promotionEndDate is taken from some Data Extension
+%%[
+	var @promotionEndDate, @memberStatus
+	set @promotionEndDate= '10/15/2018'
+	set @memberStatus= status
+
+	if @memberStatus== 'gold' then
+		set @promotionEndDate= '11/15/2018'
+
+	end if
+]%%
+
+************
+Passing variables in a function-
+if the variable has previously been declared, then it can be used as an argument to a function, based on its previous value
+eg-
+%%[
+	var @promotionEndDate, @memberStatus
+	set @promotionEndDate='10/15/2018'
+	set @memberStatus= status
+
+	if @memberStatus=='gold' then
+		set @promotionEndDate= DateAdd(@promotionaEndDate, 1, 'M')
+endif
+]%%
+
+********************
+Setting the value to null-
+once a variable has been set, it can be reset by declaring the value again. 
+eg-
+%%[
+	var @membershipEndDate, @emberStatus
+	set @membershipEnddate='10/15/2018'
+	set @memberStatus= status
+
+	if @membershipEndDate > Now() then
+	var @memberStatus
+	endif
+]%%
+
+**********************
+Like other scripting languages, AMPscript is interpreted from top to bottom, which means that variables have to be declared and set before they can be used. However, email components are interpreted in the following order:
+
+Preheader
+HTML body
+Text body
+Subject line
+
+<!--Appears in Body-->
+%%[
+	var @subjectLine
+	if AttributeValue('Member Status') == 'VIP' then
+  set @subjectLine = 'An exclusive offer for VIP members'
+else
+  set @subjectLine = 'A special offer for our members'
+endif
+]%%
+
+<!--Appears in Subject Line-->
+%%=v(@subjectLine)=%%
+
+****************
+<p>Hello %%=v(@displayName)=%%,</p>
+v=Outputs the value of the variable
+

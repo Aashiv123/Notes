@@ -1,0 +1,174 @@
+Basic Syntax Of Css-
+selector{
+	property: value;
+}
+
+
+h1{
+	colour: blue;
+}
+
+
+*********************************
+Direct Combinator-
+eg-
+<div>
+	<h2>Access</h2>
+</div>
+
+we can access all elements of HTML by *
+*{
+	text-align:center;
+	colour:blue;
+}
+
+eg-
+<h1>Hello</h1>
+
+we can access it directly By Element
+h1{
+	background-Colour:blue;
+}
+
+
+eg-
+<p id="coolId"> aashiv </p>
+
+we can access the id by #
+#coolId{
+	font-size:bold;
+}
+
+eg-
+<p class="FifthClass"> Contact </p>
+
+we can access the class by .
+.FifthClass{
+	font-style:italic;
+}
+
+eg-
+<p class="seventhClass"> paragraph </p>
+
+we can access the element and class name at once-
+p.seventhClass{
+	text-align:center;
+	background-colour:black;
+}
+
+eg-
+<h1>hello</h1>
+<h2>geek</h2>
+<p>rick</P>
+
+we can give similar property to all this elements at once
+h1, h2, p {
+	colour:red;
+}
+
+*************************
+Inline, Tag in Html, Seperate Css File
+
+Html-tag In Html
+	<html>
+		<head>
+			<style>
+				h1{
+					colour:red;
+				}
+			</style>
+		</head>
+
+		<body>
+
+		</body>
+	</html>
+
+
+HTML-inline style
+	<html>
+		<head>
+			<H1 id="idcode" Style="colour:blue; font-size:46px;"> Welcome </H1>
+		</head>
+
+		<body>
+
+		</body>
+	</html>
+
+*************************
+
+Also There are Desendent Combinator In Css-(parent-child)
+1) SImple Desendent Elemtns.. which is denoted by parent child
+Html-div is a parent to p
+	<div>
+		<p>paragraph 1</p>
+		<p>paragraph 2</p>
+		<p>paragraph 3</p>
+	</div>
+
+css-To make change to only those element that are inside Div element
+	div p{
+		colour:red;
+	}
+
+2)The direct child combinator (grandParent-parent-child)
+Html-div is a parent to p
+	<div class="a">
+		<p>paragraph 1</p>
+			<div class="b">
+				<p>paragraph 2</p>
+			</div>
+		<p>paragraph 3</p>
+	</div>
+
+css-To make change to only child elevemnt of div (a)
+	.a>p{
+		colour:red;
+	}
+
+3)general Sibling Selector-(Brother-Sis)
+	div~p{
+		colour:red;
+	}
+
+4)Adjescant sibling Selector-(Just next To)
+HTML-
+	<div>
+		<p></p>
+		<p></p>
+	</div>
+	<p></p>	-->this p is the adjacent to div elemnt(element just after another element)
+
+Css-
+	div+p{
+		colour:red;
+	}
+
+***************************
+<link>-Defines a link between a Document(HTML) and an external resource
+
+If we Want to connect Css into our HTML
+we Use:
+<link ref="stylesheet" href="cssFileName.css">
+
+
+<Script>-Define a link between a Document(HTML) and an external resource
+
+If we want to connect Js into our Html
+we Use-
+<script src="JsName.js"></script>
+
+*********************
+
+
+
+
+
+
+<ul>= this will list items using plain bullets and 
+<li>= list
+<a>= link
+<p>= paragraph
+<div>= devision
+<img>= insert image

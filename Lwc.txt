@@ -1,0 +1,157 @@
+camel Case-helloWorld
+PascalCase-HelloWorld
+Kebab-case-hello-world	-->all Lower case
+
+***********
+js-if we have attributes like
+ name="Aashiv";
+ employee={			-->object
+	name:"aashiv",
+	empno:12	
+	}
+
+booksNames=["2States","Jungle Safari","Blocker Zest"] -->array
+
+
+**************************
+
+
+Html
+<p>name-{name}</p>
+<p>employee Details-{employee.name}</P>
+*******************
+But the above method is not right to fetch the array and
+array of Object,Also if we are Doing some calculation 2*2
+
+So we just wrap the calculation or array into a function and pass that function in HTML
+cart=["Phone","Shoes","Tshirt"];
+if we want to print cart[0] value
+
+we will wrap it in the function-only this function should be get
+cart=["Phone","Shoes","Tshirt"];
+get firstArrayValue(){
+	return this.cart[0];
+}
+
+
+HTML-
+<p>the value of array-{firstArrayValue}</p>
+**************
+Single way data binging and Double way data binding,But same problem occurs when we are woring with arrat and object
+@track-
+-so we go with @track Decorator-to track the property of Variable
+-all fields in a LWC class are reactive. 
+-If a field’s value changes, and the field is used in a template the component rerenders and displays the new value
+
+***************
+Conditional Rendering-Make the DOM element visible i the codition is true/false
+-It work on Template Tag
+<template lwc:if></template>
+<template lwc:elseif></template>
+<template lwc:else></template>
+
+****************
+template Looping-For:each for:item for:index and it works on tepmlate
+we have to use key
+html
+carList=["Supra","nissan","Mustang","bmw"];
+<template for:each={carList} for:item="cc">
+	<div key={cc}>{cc}</div>
+</template>
+
+************************
+There is a Parent Component- Tata
+There is child componet-TataExceli, TCS, TataPower
+
+To call the child into parent we will be using- <c-tata></c-tata>
+<c-tata-exceli></c-tata-exceli>
+
+**************'
+Shadow Dom-hidden DOM inside a Main Dom,if we make some styling on the main dom there is no impact on shadow dom
+
+if we are using 2-3 css libraries,then it might get overridde if the calss matches
+
+-When we are creating Shadow dom then we will be creating shadow dom in JS
+
+Js-
+customElements.define('anyNmae',class extent HTMMLElement{function(){})
+
+customElements.define('cust-tag',
+	class extends HTMLElemnt{
+	connectedCallback(){
+		const temp=this.attachShadow({mode:'open'})
+temp.innerHTML=`<p> hello </p>`
+or for dynamic 
+temp.innerHTML=`<p> Hello, ${this.getAttribute('name') </p>`
+	}
+})
+
+********************
+js-window
+html-document
+LWC-template
+
+**********************************
+Lifecycle Hooks-
+methos called at a perticular phase
+
+Mounting Phase-constructor(),connectedCallBack(),render(),renderedCallback()
+
+unmounting-removing elemtn from dom then this method is called
+disconnectedCallback()
+
+errorphase-errorCallback()
+
+******************
+flow-
+Constructor-->component inserted in dom-->connectedCallback()-->component render-->child constructor-->child component inserted in dom-->connectdeCallback()-->child component render()-->child rendereCallback()-->parent renderCallback()
+
+*************
+Constructor-
+-Runs when a component instance is created
+-you have to call super() first inside this
+-at this point,the component properties wont be ready yet
+-to acess the host element,use this.template
+	even though we have elemts in html,we wont be able to access them
+	this.template can only be used for eventlistner here
+	but we rarely use it
+-flows from parent to child
+-we cant access child elemenent in the component body because they dont exist yet
+-dont add attribute to the host element in the constructor
+
+***************
+connectedCallback-
+-called when the element is inserted into a document
+-flow from parent to child
+-you cant acccess child elemt in the component body because they dont exist yet
+-you can acees the host element with this.template
+	here we use this.template.querySelector
+-USE it to-Perform initialization task,such as fetch data,set up caches,or listen to event
+-DONT USE -to change the state of a compoent,such as loading vales or setting properties
+use gettter setter instead
+************8
+renderedCallback-
+-fires when a compponent rendering is done
+-it can fire more than once
+-flow from child to parent
+-when a compoennt re-renders,all expression used in the template are re-evaluated
+
+DO Not use-
+-to change the state or update property of a compoent
+-dont update a wire adapter configuration object property,as it can result in infinite loop
+
+**************
+disconnectedCallback-
+-Fires when a component is removed from the DOM
+-it flows from parent to child
+-this callback is specfic to lightning Web component
+
+You can use it for simple purposes like to remove cache or event listeners. Let's define disconnectedCallback() on our child component js. You can simply add the below method
+
+*************
+errorCallback()-This callback method will be called whenever an error occurs in lifecycle hook and it captures errors in all the child (descendent) components in it's tree
+-errorCallback(error,stack)
+
+similar to js,catch() block, error and stack are the two arguments.error is js native error object,whereas stack is a string
+-to capture the stack information and render a different template when error is occured
+

@@ -1,0 +1,188 @@
+Salesforce Resoures-
+1)Static Resources-To import static resources we use @salesforce/resourceUrl , We can import .zip .jar images styleSheets. js and other files
+
+import myResource from '@salesforce/resourceUrl/resourceReference';
+
+*************
+To import static resources-
+1)Go to Setup-->search Static resources
+2)New-->give name(user_image)-->choose A file (image,etc)
+3)cache Control-->public
+
+eg-
+import ImageFetched from '@salesforce/resourceUrl/user_image'
+
+js-To access this Image just store this ImageFetched into a variable
+
+userImage=ImageFetched
+
+****************
+
+2)Third party Js libraries in LWC
+The approach is similar,Load the Js into static variable and the import it into LWC
+
+import resourceName from '@salesforce/resourceUrl/resourceName';
+
+Import methods from the platformResourceLoader Module
+import {loadScript} form 'lightning/platformResourceLoader'
+
+loadScript(Reference to the component, fileUrl): Promise
+
+
+eg-moment is a js library that is downloaded and is stored into a folder which is zipped
+
+import MomentName from '@salesforce/resourceUrl/moment'
+import {loadScript} from 'lightning/platformResourceLoader'
+
+js{
+	currentDate='';
+	renderedCallback(){
+		promise.all([
+			loadScript(this,MomentName+'/moment/moment.min.js')
+		]).then(()=>{
+				this.setDateOnScreen();
+			}).catch(error=>{
+				console.error(error);
+				})
+	}
+
+}
+
+setDareOnScreen(){
+	this.currentDate=moment().formate('LLLL')
+}
+
+*****************
+3)Loading js-Same fundamental
+import resorceName from '@salesforce/resourceUrl/resorceName'
+
+import {loadStyle} from 'lightning/platformResourceLoader'
+
+loadStyle(refrence to the componet, fileUrl) : promise
+
+
+eg-(stylu)css file that i have added to static method in salesforce
+
+import stylingFile from '@salesforce/resourceUrl/stylu'
+import {loadStyle} from 'lightning/platformResourceLoader'
+
+promise.all([loadStyle(this,stylingFile)])
+.then(()=>{
+	//perform success logic (no need to perfomr logic as it is just css)
+.catch((error)=>{
+	console.error(error);
+	})
+
+**************************
+4)Content Asset files-
+If the file is already present in the asset file then we can import that file in Lwc using
+
+import myContentAsset from '@salesforce/contentAssetUrl/contentAssetReference';
+
+
+For this Upload your files to the assetLibraby present in All Apps-->libraries
+
+*****************************
+5)Internationalization-it helps us to adapt our component worldwide,
+eg-if we have a component we want the language to be HINDI when the component is accessed by Indian,or maybe in Dutch if the person tried to access the component in Germany
+
+import internationalizationPropertyName from '@salesforce/il8n/internationalizationProperty'
+
+eg-
+import LOCAL from '@salesforce/il8n/locale'
+import CURRENCY from '@salesforce/il8n/currency'
+
+js{
+	number=657899.86;
+	formattedNunber=new Intl.NumberFormate(LOCALE, {
+		style:'currency',
+		currency:CURRENCY,
+		currencyDisplay:'symbol'
+	}).formate(this.number)
+
+}
+
+*************************
+6)label-
+Custom label are text values stored in salesforce theat can be translated into any language that support salesforce.
+for eg- Help text or error messages in a User's native Language
+
+import LabelName from '@salesforce/label/labelReference';
+
+Note-The name of the label in your org in the formate namespace.labelName (c.aashiv)
+
+
+eg-
+import Description_One from '@salesforce/label/c.aashiv'
+
+************************
+7)Check permissions without writing a code -
+in LWC we can check 2 permissions-1) userPermission 2)customPermission
+
+import hasPermission from '@salesforce/userPermission/PermissionName'
+
+import hasPermission from '@salesforce/customPermission/PermissionName'
+
+eg-It will return true/false,
+To access this name "ViewAllData"-->go to developer console-->object-->profile-->search
+
+The senario is that if i have a User Named as Aashiv and has a permission as To not see anything.And suppose if Aashiv tries to login as a user then it shows ,you are not allowed to see this content
+
+import Userpermission from '@salesforce/userPermission/ViewAllData'
+
+js{
+	get hcnkja(){
+		return Userpermission;
+	}
+}
+
+html
+<template if:true={hcnkja}>
+	<div> Opps! you cannot access the content</div>
+</template>
+
+***************
+8)Form factor- hardware the browser is running on.IT is used with wire adapter (client will be Desktop )
+Large—A desktop client.
+Medium—A tablet client.
+Small—A phone client.
+
+import FORM_FACTOR from '@salesforce/client/formFactor
+
+
+basically we will get the output as Large if we open the compoennt on PC ,medium if we open the component on tablet and smallwhen we open the component on phone
+
+
+******************
+9)Get Information About the current User-
+
+import property from '@salesforce/user/property';
+
+Property supports only two properties
+Id-user's ID
+isguest-boolean value indicating wether the user is a community guest user or not
+
+***************
+10)Fetching RecorId and Oject name-
+@api recordId-if the component with a recordId property is used on a lightning record page,the page sets the property to the ID of the current record
+
+@api ObjectApiName-if a compoentn with an objectApiName property is used on a lightning record page, the page seyts the property to the ApI name of the current object
+
+
+eg-AAshiv more is a record with recordid=34567gdsvjafkda
+and is present on the object= Account
+
+Then recordId=34567gdsvjafkda
+and objectApiName=Account
+
+**********************
+10)Toast Notification-it is a popup that alerts user with some information,Toast can be success, error or Info
+
+import {showToastEvent} from 'lightning/platformShowToastEvent'
+
+const evt=new ShowToastEvent({
+	title:"Toast title",
+	message:"toast message",
+	variant:"toast variant" //(success,info,error)
+});
+this.dispatchEvent(evt);

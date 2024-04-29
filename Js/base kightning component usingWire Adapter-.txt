@@ -1,0 +1,256 @@
+Wire Adapter(metaData)-gives you more flexibility
+	-more customization to create a form
+	-Raw data like - picklist,recordInfo,objectInfo
+	-you want to perform business logic
+
+wire adapters and js functions are available in lightning/ui*Api modules which are build on user interface API.
+And this user interface API supports all cusotm and standard objects
+
+1)lightning/uiObjectInfoApi-
+	to get the metadata of a object
+	to get the picklist values
+2)lightning/uiListApi-	
+	to get the records and metadata for a list view
+3)lightning/uiRecordApi-(recording)
+	use to capture data and get default values to create records
+	it also includes Js Api to create,delete,update and refresh records
+4)lightning/uiAppApi-
+	get data & metadata for apps displayed in salesforce
+
+
+***************
+@wire-It is build on Lightning Data Service
+-LWC components use @wire in their js class to read data from one of the wire adapters in the Lightning/ui*Api
+-@wire is a reactive service
+-it is an immutable stream
+
+import {adapterId} from 'adapterModule'
+
+@wire(adapterId, adapterConfig)
+property/Function
+
+**************
+To fetch the user Details there are 2 methods
+1) import Id from '@salesforce/user/id'
+but in this method we can only fetch the Id of the user not the other details
+
+2)using wire adapter
+import { LightningElement, wire} from 'lwc';
+import {record} from 'lightning/uiRecordApi'
+
+export default class UserDetails extends LightningElement {
+    
+    //0055j000006jBE5AAM
+    @wire(record, {recordId:"0055j000006jBE5AAM", fields:['User.Name', 'User.Email']})
+    userDetailhandler(response){
+        console.log(response.data);
+        console.log(response.error);
+    }
+  
+}
+
+
+response has 2 things in it-
+1)data
+2)error
+
+userDetailhandler(response){
+        console.log(response);
+        
+    }
+
+
+or instead of response we can also write as 
+userDetailhandler({data, error}){
+        let data=response.data;
+	let error=response.error
+    }
+
+
+data has- fields (name, email,etc), apiName, id
+
+fields has- displayValue and value:'aashiv.more@gmail.com'
+
+*************
+eg-
+impotr {getRecord} from 'lightning/uiRecordApi'
+
+export default class UserDetails extends LightningElement {
+    
+userDetail
+    //0055j000006jBE5AAM
+    @wire(record, {recordId:"0055j000006jBE5AAM", fields:['User.Name', 'User.Email']})
+    userDetailhandler({data, error}){
+        if(data){
+		this.userDetail=data.fields
+	}
+	if(error){
+		console.error(error);
+	}
+    }
+  
+}
+
+
+HTML-
+<template>
+	<lightning-card title="User detail using wire">
+		<div>
+			<template if:true={userDetail}>
+				<div>
+			email:  {userDetail.Email.value}
+				</div>
+			</template>	
+		</div>
+	</lightning-card>
+</template>
+
+***********************
+
+Similarly For Property-
+js-
+impotr {getRecord} from 'lightning/uiRecordApi'
+
+export default class UserDetails extends LightningElement {
+    
+userDetail
+    //0055j000006jBE5AAM
+    @wire(record, {recordId:"0055j000006jBE5AAM", fields:['User.Name', 'User.Email']})
+ propertyFun;
+
+
+HTMl-
+<template>
+	<lightning-card title="User detail using wire">
+		<div>
+			<template if:true={propertyFun.data}>
+				<div>
+			email:  {propertyFun.data.fields.Email.value}
+				</div>
+			</template>	
+		</div>
+	</lightning-card>
+</template>
+
+**************
+if we dont want the record id to be hard coded then we use '$this.usId'
+always use '$'
+
+
+
+
+
+**********************
+ObjectInfoApi-use the wire adapter to get metadata about a specific object. the response includes metadata such as Object Fields, child Relationship, record Type, theme
+
+Syntax is same
+
+HardCoded value-
+generally we use 
+	@wire(getRecordId, {recordId:'1256tyfsvcyugs'})
+
+But what if we want to fetch the data dynamicaly
+first import the refrence
+
+import Account_Object from '@salesforce/schema/Account'
+
+@wire(getObjectInfos, {objectApiName: Account_Object})
+property/function
+
+
+*************
+we can pass multiple object as well in the import formate and to the wire formate 
+
+eg-
+import {getObjectInfos} from 'lightning/uiObjectinfoApi'
+
+import Account_object from '@salesforce/schema/Account'
+import Opportunity_objetc from '@salesforce/schema/Opportunity'
+
+
+@wire(getObjectInfos, {objectApiNames:[Account_Object, Opportunity_Object]})
+property/Function
+
+
+data.result.account.apiName
+data.result.oppotunity.defaultRecordTypeId
+
+
+This result will be in a form of array so just run a for:each loop in HTML
+
+*************************
+defaultRecordTypeId-use to fetch the picklist values
+recordtypeId=The Id of the record Type
+fieldApiName=The Api Name of the picklist field
+
+same syntax 
+
+import {getPicklistValues} from '@lightning/uiObjectInfoApi'
+import Industry_Filed from '@salesforce/schema.Account.Industry'
+
+@wire(getPicklistvalues, {recordTypeid: '0234651789Ayy',filedApiName: Industry_Field})
+property/method
+
+
+*************
+getRecord-To get the record's data-ezzy just like form
+
+import {getRecord} from 'lightning/uiRecordApi';
+
+@wire(getRecord, {
+	recordId: string,
+	fields: string/string[],
+	optionFields?: string/string[]
+})
+property/funciton
+
+
+@wire(getRecord, {
+	recordId: string,
+	layoutTypes: string/string[],
+	modes?: string/string[],
+	optionFields?: string/string[]
+})
+property/function
+
+
+mode = Edit ,view , create
+optionFileds= a field name or an array of a field names
+
+*********************
+Now to getFieldvalue
+
+import {getfieldValue} from 'lightning/uiRecordId'
+getfieldValue(record:record, field:string)
+
+getfieldDisplayvalue
+
+import {getfieldDisplayValue} from 'lightning/uiRecordId'
+getfielddisplayvalue(record, feild)
+
+***************
+getlistUi-to get the records and metadata for a list view
+
+import {getListUi} from 'lightning/uiListApi';
+import Contact_Object from '@salesforce/schema/Contact'
+
+@wire(getListUi ,{
+	objectApiName:Contact_Object,
+	listViewApiName:'All contacts'
+})
+property
+
+
+we can also view sortBy, pageSize, pageToken
+
+****************
+getNavItems adapter-to navigate to the standard object/custom objects
+getRecordUi adapter-to get the page layout information,metadata
+
+*************************
+CreateRecord function-to create a record
+
+import {createRecord} from 'lightning/uiRecordApi'
+createRecord(recordInput: record): promise<Record>
+
+recordInput-A record input object is used to create the record. this object take object apiName and fields details as input

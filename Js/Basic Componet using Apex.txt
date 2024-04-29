@@ -1,0 +1,104 @@
+Why we should use Apex Method-
+1)Loading a list of records by criteria (for example to load the first 200 Accounts with Amount > $1M)
+2)To perform Transactional operation.for eg, to create an Account and create an opportunity associated with the new Account.If create fails the entire transaction is rolled back
+3)To work with object that arent supported by UP API,like Task and Events
+
+there are twomethods-
+1)Wire Apex Methods
+2)Call Apex MEthods imperatively
+
+To Expose the apex class or method to Lwc weneed to write something
+@AuraEnabled(cacheable=true)
++
+The method should be 'Static'/'Global'/'public'
+
+
+
+Get this apex class/method in LWC
+
+import apexMethodName from '@salesforce/apex/ClassName.apexMethodRefrence'
+
+
+**************************
+Wire Apex Methods-(calling from Apex)
+
+import apexMethodName from '@salesforce/apex/ClassName/apexMethod'
+
+@wire(apexMethodName,{ApexMethodParams})
+propert/method
+
+Note-If a parameter value is null the method is called but if the value is undefined the method isnt called
+
+*********************************
+eg-using Wire as property
+
+import apexMethodName from '@salesforce/apex/ClassName/apexMethod'
+
+js class{
+	wire(apexMethodName)
+	account;		-->property
+}
+
+html-
+
+<lightning-card title="calling Apex">
+	<template if:true={account.data}>
+		<template for:each={account.data} for:item='account'>
+		<div key={account.id}>
+			<strong>{account.name}</strong>
+			<strong>{account.type}</strong>
+		</div>
+	</template>	
+</lightning-card>
+
+*************
+Using wire as Method-
+if type==="customer-Direct" then it should be Direct
+also
+if type==="customer-Channel" then it should be Channel
+
+js-
+
+accountlst
+
+@wire(getAccountList)
+accountsHandler({data,error}){
+	if(data){
+		this.accountlst=data.map(item=>{
+			let newType
+				if(item.Type==='Customer-					Channel'){
+											this.newType='Channel';
+		
+				else if(item.Type==='customer-direct'){
+				this.newType='Direct';
+
+				}
+				}
+	return {...item, newType}
+			})	
+	}
+	if(error){
+		console.error(error)
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

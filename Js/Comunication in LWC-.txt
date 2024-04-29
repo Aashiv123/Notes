@@ -1,0 +1,17 @@
+Comunication in LWC-
+
+1)Parent-to-child communication-Parent component can pass data to child components directly using properties.To pass data from a parent to child component,in the child component,define a public property using the @api decorator
+
+and in the parent component,bind the child components public property to a value using an HTML attribute
+
+2)child-to-parent communication-IN LWC child components cannot pass data to parent components directly using properties.instead child components need to dispatch an event with data.
+
+and parent need to be configured with a listner to listen to the event for the child component
+
+3)Sibling component communication-Communication between sibling components can be achieved through their common parent by passing data via events.the parent components listens for event from one sibling component.when the evnt is triggered,the parent component updates the relevant property of the other sibling component
+
+4)The Pub-Sub pattern-In more complex scenarios where communication is required among unrelated components,the Publish-Subscribe (Pub-Sub) pattern can be used. This pattern involves creating a shared service for sending and receiving messages between compoents without a direct relationship.
+
+Salesforce provides the LMS (lightning messaging service) for implementing the pub sub pattern in LWC.you can create mesage channel and use subscribe,unsubscribe and publishn method to facilitate communication among components
+
+*******************

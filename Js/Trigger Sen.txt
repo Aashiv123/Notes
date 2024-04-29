@@ -1,0 +1,75 @@
+
+1,3,4,5,8,10,11,12,13,17,18,19,22,23,24,25,26,27,28
+
+1-Account trigger to set account rating as 'Hot' if account indusry is "Banking" or "Healthcare"
+
+2-Trigger on contact which will create Account record whenever contact is created withoud an account
+
+3-create a trigger on contact object, to make the email and phone fields should be mandatory upon creating or updating a contact record
+
+4-create a trigger on Account Object,to Assign the AnnualRevenue Value as below...
+Industry Name Annualrevenue
+Banking-->500000
+Finance-->400000
+Insurance-->350000
+healthcare-->250000
+else-->50000
+
+5-Create a trigger to prevent the deletion of an active account record
+
+6-write an apex trigger to prevent the duplicate candidate record inside the object
+
+7-Write a trigger to prevent the deletion of the associated contacts upon removin the account record
+
+8-write an apex trigger to synchronize the contact records phone and fax value with the associated account records phone and fax number
+
+9-when lead is created or updated then check if the email of lead is already there in existing contacts.if Email already exists then throw error
+
+10-Create a related contact when an account is created
+
+11-When an account inserts and CopyBillingaddresstoShippingAddress (Custom Field) checkbox is checked then copy BillingAddress to Shipping Address
+
+12-Upton creation of positions(Custom Object) if it is a new Position and Open date,Min Pay and Max pay are not populated then populate them with below values:
+a-OPEN DATE=Today's Date
+b-Min Pay=10000
+c-Max Pay=15000
+
+13-Create a Related Opportunity When an Account is created
+
+14-When a case is created on any account,put the latest case number on the account in the 'Latest case Number' field
+
+15-account records should have a field named 'Recent Opportunity amount'.it should contain the opportunity amount of the latest created opportunity on account
+
+16-on account create two checkbox fields labeled as Contact and Opportunit.now when a new Account record is created and if a particular contact or opportunity checkbox is checked then create that related record.also opportunity record should be created only if the account record active picklist is populated with a Yses
+
+17-if the account phone is updated then populate below message in description
+description=phone is updated! old value: yyy and New Value: zzz
+
+18-if opportunity stage is updated upon its creation or updated then update description as either 'Opp is closed Lost ' or opp is closed Won" or 'Opp is open'
+
+18-if the account phone is updated then polulate the phone number on all related contacts..using map
+using parent-child soql
+
+19-if the account billing address is udated then update related contact milling address
+using parent-child soql
+
+20-when a opportunity stage(field) is changed .create a task record on opportunity and assign to logged in user/opportunity owner/any user
+
+21-write a trigger on account when account active field is updated from "yes" to "No" then check all opportunities associated with the account.Update all opportunities stage to close lost if stage not equal to close won
+
+22-prevent account record from being edited if the record is created 7 days back
+
+23-apply validation using addError() method in trigger,while creation of opportunity amount is null then throw an error message
+
+24-when an opportunity is updated to closed lost and closed lost reason (field) is not populated then throw validation error that 'please populate closed lost reason' on opportunity
+
+25-write a trigger on account and check only system administrator profile users should be able to delete an account
+
+26-if an opportunity is closed then, no one should be able to delete it expect the user having a system administrator profile
+
+27-prevent deletion of an account if there is any opportunity related to that account
+
+28-prevent deletion of an account if there is any case realated to that account
+
+29-Email using trigger
+

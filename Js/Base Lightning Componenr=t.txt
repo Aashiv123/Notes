@@ -1,0 +1,210 @@
+We can read the Salesforce data using LDS (Lightning Data Services) ....
+LDS is centerilised data Caching framework
+1) Forms
+2) Wire Adapters 
+3) Apex
+
+1) Forms-
+a) Lightning-record-Form
+b) Lightning-record-view-Form
+c) Lightning-record-edit-Form
+
+			record		View	edit
+Create record 		  1			1
+Edit record		  1			1
+View record		  1		1
+Read-only Mode		  1		1
+Layout Types		  1
+Multi Column Layout	  1	
+Custom Layout for fields		1	1
+Custom Rendering of records		1	1
+
+NOTE-Lighting record form is less customizable then others
+
+
+**************************
+a) Lightning-record-Form:
+Benifits:
+1)Switch between edit and view form
+2)Provide cancle and save Buttons automatically
+3)Use Object Default layout and support multi column layout
+4)Loads all fields in the objects compact or full layout,or only the fields you specify
+
+************
+Attributes:
+1) object-api-name = It is always required ,t establish a relationship between a record and a object
+
+2)record-id = This attribute is required only when you're editing or viewing a record
+
+3)fields = pass string as  a array, tihs fields display in the order you list them
+
+4)layout-type = use this attribute to specify a full/ compact layout (created and edited by Admins)
+
+5)mode = 
+	edit= Creates an editable form to add a record or update an existing one.edit mode is the default when record-id is not provided and display a form to create new reord
+(We can make a new record and also update it)
+
+	view=create a form to display a record that the user can also edit. the record fields each have an edit button. view mode is the default when recd-id is procided
+(In this mode, form using output fields with inline editing enabled)
+(user can also edit the record)
+
+	readonly=readonly - Creates a form to display a record without enabling edits. The form doesn't display any buttons.
+(In this mode, form loads with output fields only and you will not see edit icon or submit or cancle buttons)
+
+6)Columns=use this attributes to show multiple columns in the form
+
+************************
+import objectName from '@salesforce/schema/objectrefrence'
+
+import fieldName from '@salesforce/schema/object.fieldReference'
+
+syntax-
+<lightning-record-form
+	object-api-Name={objectName}
+	fields={fieldList}
+	onsuccess={successhandler}
+>
+</lightning-record-form>
+
+If we want to display the ID then it is stored in Event.detail.Id
+
+*********************
+Display a record using lightning-record form-
+view
+read-only
+
+we will need record-id and mode
+
+**************
+we will be mostly using fields ,but in case we are using layout-type then we are giving the administrator the permission to change the layout,where as if we are using the fileds then we/component are taking the control in our hand
+
+Edit-we can directly use edit to update the fields
+
+
+***********************
+For dynmic use
+@api recordId
+@api objectApiName
+
+***************************
+
+
+2) lightning-record-view-form:
+-The fields are rendered with their label and current values as read-only
+-You can customise the form layout,or else just use lightning-record form
+-To specify read-only fields,use lightning-output-field components inside lightning-record-view-form
+
+<lightning-record-view-form
+	object-api-name="Account"
+	record-id="23456728egjd21657"
+>
+	<div	class="slds-grid slds-gutter">
+		<div class="slds-col slds-size_6-of-12">
+			<lightning-output-field filed-					name="Industry">
+				
+			</lightning-output-field>
+		</div>
+	</div>
+
+
+</lightning-record-view-form>
+
+
+****************
+lightning-record-edit-form
+-we can customize the record ,we can create and edit the record basically
+-we have to create a buttons
+
+<lightning-record-edit-form
+	object-api-name={objectName}
+>
+
+<lightning-messages></lightning-messages>
+	<lightning-input-filed field-	name={field.accountField}</lightning-input-field>
+	</lightning-record-edit-form>
+<lightning-button class="slds-m-around_xx-small" label="cancle"></lightning-button>
+<lightning-button class="slds-m-around_xx-small" label="Save"></lightning-button>
+
+
+
+<lightning-message> = will show the Red Message on the form,if there is some error
+
+******************* 
+Now i want to reest the lightning-record-edit-form
+-On click of cancle i want to reset the form
+
+we need all the lightning-input-field to be reset so...
+
+<lightning-button class="slds-m-around_xx-small" label="cancle" onClick={handleReset}></lightning-button>
+
+
+js-
+handleReset(){
+	 inputfiled=this.template.querySelectorAll('lightning-input-filed'); 
+	if(inputfiled){
+		Array.from(inputfiled).forEach(field=>{
+			field.reset();
+		})
+	}
+
+}
+
+***********************
+No i want to update the record created Lightning-record-edit-form
+
+To it we just need to put the record-id-ezzy pizzy
+
+*********************
+What if we want a custom label to a given field
+suppose we have "Industry" as a api name but we want the custom label to this name as "Manifacturing Industries"
+
+Just use varient="label-hidden",and add <label></label> tag before the field
+
+
+<label class="slds-p-left_x-small">Manufacturing Indusrty</label>
+<lightning-input-field varient="label-hidden" field-name={filed.Industry}></lightning-input-field>
+
+***************************
+
+Validation-
+
+<lightning-input 
+value={name}
+onKeyup={handleChange}
+>
+</lightning-input>
+
+
+<lightning-button label="save" varient="base" type="Submit"></lightning-button>
+
+
+Js-
+inputValue=''
+
+handleChange(event){
+	this.inputValue=event.target.value;
+}
+
+handleSubmit(event){
+	event.preventDefault()
+	const inputCmp=this.template.querySelector('lighting-input')
+
+const value=inputCmp.value
+	if(!value.includes('Australia')){
+		inputCmp.setCustomeValidity("The account must contain Australia");
+	}
+	else{
+		inputCmp.setCustomValidity("")
+		const fields=event.detail.fields
+		fileds.Name=value
+		this.template.querySelector('lightning-record-wdit-form').submit(fields)
+	}
+
+	inputCmp.reportValidity();
+}
+
+
+***************************
+
+
+

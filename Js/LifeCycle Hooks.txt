@@ -1,0 +1,93 @@
+A lifecycle hooks is a callback method triggered at a specific phase of a component instance lifecycle
+
+Mounting Phase-
+1)Constructor()
+2)connectedCallback()
+3)renderedCallback()-Only from from child to Parent
+4)render()
+
+Unounting Phase-
+1)disconnectedCallback()
+
+Error Phase-
+1)errorCallback()
+
+*******************
+For easy Understanding-
+
+-When a component is created constructor() method is called
+-when this component is deployed in a page (DOM) then connectedCallback() method is called
+-then elements in that component is rendered and renderedCallback() method is called
+-when that component is removed from that page then disconnectdeCallback() methos is called
+-To handle error errorCallback() methos is present
+
+*****************************
+1) Constructor()-
+-Invoked when the instance of the component is created (similar to init() in aura).
+-Fired in the parent component first since it flows from parent to child.
+-You have to call super() inside first to call parent class constructor ie. LightningElement.
+-Access the host element in the component template, use this.template. 
+-we cant access the child element in the component body because they r not ready yet
+
+******************************************
+2)Initialization-connectedCallback()
+After the component is initialized, this hook is called. It’s an ideal place for DOM manipulations and data retrieval.
+
+-Invoke when component inserted into DOM.
+-It flows Parent to Child.
+-Used for to perform initialisation task such as fetch data, set up -cache, listen events.
+-To check component is connected in DOM, use isConnected method.
+-we can access host element using this.template
+-we cant access the child element in the component body because they r not ready yet
+
+*********************************
+renderedCallback(): 
+This hook is triggered after the component’s initial render. It’s suitable for actions that require knowledge of the rendered DOM, like interacting with elements.
+
+-Use it to perform logic after a component has finished the rendering phase. It invoked when a component is completely rendered on UI.
+-Flows from child to parent component.
+-Component rendered many times during there lifecycle, to track renderedCallBack(), use isRendered boolean field.
+-Property leads to infinite loop in renderedCallBack().
+-we can access the child component as they r ready
+
+Drawback
+Whenever a property or variable changes in the component, it may trigger a reactivity cycle. During this cycle, the component checks for changes in properties, and if changes are detected, it re-renders and invokes the `renderedCallback` again.
+
+**************************************
+disconnectedCallback(): When the component is removed from the DOM, this hook is called. It’s an excellent place for cleanup operations and releasing resources like event listeners.
+
+-Called when the element is removed from a document (remove event listener, remove time interval etc).
+-Follows Parent to Child.
+-Use disconnectedCallback() to clean up work done in the connectedCallback(), like removing event listeners.
+-You can also use this hook to unsubscribe message channel.
+
+--It is very important to avoid the memory leak issues
+
+************************
+errorCallback(): If an error occurs during rendering, this hook is invoked. It provides an opportunity to gracefully handle errors and display appropriate messages.
+
+-Called when a descendant(Child) component throws an error.
+-Two arguments are passed in errorCallback(error,stack), the error argument is a JavaScript native error object, and the stack argument is a string.
+-error isa object and Stack is a String
+Stack will show from where this error is comming from, eg <c-first-component></c-first-component>
+
+--Always written to the parent js
+
+*********************
+
+Render() Method-render is a method that tells the component which template to load when some conditions are met,it always return the template refrence
+
+-The render() is not a technically a lifecycle hook,it is a protected method on the lightningElement class
+-Call this method to update the UI.it may be called before or after connectedCallback()
+-it's rare to call render() in a component.the main use casee is to conditionally render a tempolate
+
+Suppose there are 3-4 html files present in the lwc ,based on the condition we want to load the specific html 
+
+
+
+when to predere multiple template over if:true/if:false?
+-if:true/if:false is recommend whenever there is small template to hide and show
+-ideally its always recommend to break down your components into small units
+-whenever we have a senario in wwhich we have same business logic but we want to render a component with more then one look and field
+-whenever we have two design in same component but not want to mix the HTML in one file
+

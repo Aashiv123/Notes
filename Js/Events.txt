@@ -1,0 +1,58 @@
+Events-change in the state of an object is know as an event.Generally we fire event to do some work.
+eg-Mouse event-single click,double click
+   Form events-submit form
+   Keyboard Event-Keypress,keyup,keydown
+   print event 
+
+-Every element of the DOM can produce an event
+
+eg-we will write js in html (Inline Handling Helper)
+html-
+<button id="firstbutton" onClick="console.log('Button Clicked'); alert('dont click twice')">Car</button>
+
+eg-we will be creating a helper in java script
+btn.onClick=function(){
+	//hanlde here
+}
+
+or
+
+node.event=()=>{
+	//handle here
+}
+
+
+eg-HTML
+<button id='ff'>Click</button>
+ js-
+let a=document.querySelecto('#ff');
+a.onClick=()=>{
+	console.log('Button Clicked');
+}
+*************************************
+EVENT Object-it is a special object that has details about the event
+All event handler have access to the event object's property
+
+node.event=(e)=>{
+	//hanlde here
+}
+
+
+EVENT object- button#ff
+Target-where this event took place like button,keyboard,etc
+ff is the id 
+
+Type-click 
+button was clicked then the event was fired
+
+************************
+EventListner- We add the event listner and then we have to remove te evenet listner
+Event listner are function that always listen to the event
+
+For one event we can create multiple eventlistner
+
+-node.addEventListner(event, callback)
+-node.removeEventListner(event, callback)
+NOTE-the callback reference should be same to remove
+
+eg-
