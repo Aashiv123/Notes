@@ -183,7 +183,9 @@ const promise= createOrder(cart);
 
 Creating a Promise-
 resolve-fullfield then method will run
+if we get the orderId then it will be passed to the Consuming part
 rejected-failed catch matehod	will run
+if we dont get any id then it is still passed but in the error part
 
 function createOrder(cart){
 	const pr=new Promise(function(resolve,reject){

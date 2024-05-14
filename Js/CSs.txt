@@ -147,12 +147,12 @@ Css-
 
 ***************************
 <link>-Defines a link between a Document(HTML) and an external resource
-
+Css-
 If we Want to connect Css into our HTML
 we Use:
 <link ref="stylesheet" href="cssFileName.css">
 
-
+Js-
 <Script>-Define a link between a Document(HTML) and an external resource
 
 If we want to connect Js into our Html
@@ -166,7 +166,8 @@ we Use-
 
 
 
-<ul>= this will list items using plain bullets and 
+<ul>= this will list items using "."
+<ol>= this will list items using "numebrs"
 <li>= list
 <a>= link
 <p>= paragraph

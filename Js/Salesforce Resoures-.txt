@@ -18,7 +18,7 @@ userImage=ImageFetched
 
 ****************
 
-2)Third party Js libraries in LWC
+2)Third party Js libraries in LWC-Promise
 The approach is similar,Load the Js into static variable and the import it into LWC
 
 import resourceName from '@salesforce/resourceUrl/resourceName';
@@ -38,7 +38,7 @@ js{
 	currentDate='';
 	renderedCallback(){
 		promise.all([
-			loadScript(this,MomentName+'/moment/moment.min.js')
+			loadScript(this.MomentName+'/moment/moment.min.js')
 		]).then(()=>{
 				this.setDateOnScreen();
 			}).catch(error=>{
@@ -53,7 +53,7 @@ setDareOnScreen(){
 }
 
 *****************
-3)Loading js-Same fundamental
+3)Loading js-Same fundamental-Promise
 import resorceName from '@salesforce/resourceUrl/resorceName'
 
 import {loadStyle} from 'lightning/platformResourceLoader'
@@ -66,7 +66,7 @@ eg-(stylu)css file that i have added to static method in salesforce
 import stylingFile from '@salesforce/resourceUrl/stylu'
 import {loadStyle} from 'lightning/platformResourceLoader'
 
-promise.all([loadStyle(this,stylingFile)])
+promise.all([loadStyle(this.stylingFile)])
 .then(()=>{
 	//perform success logic (no need to perfomr logic as it is just css)
 .catch((error)=>{

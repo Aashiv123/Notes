@@ -56,3 +56,34 @@ For one event we can create multiple eventlistner
 NOTE-the callback reference should be same to remove
 
 eg-
+html-
+<lightning-button class="btn" lable="Click Here" Title="Click Here"><lightning-button>
+
+js-
+btn.addEventListner('click',callbackfunction)
+
+similarly with remove
+btn.removeEventListner('click',callbackfunction)
+
+****************************
+Custom Event:
+Without parameters-
+const ev=new CustomEvent('AnyName')
+this.dispatchEvent(ev);
+
+If we want to pass the data-
+const ev=new CustomEvent('AnyName' , 
+	details: {userName:userName}
+)
+
+this.dispatchEvent(ev);
+
+
+If we want the event to bubble up-
+const ev=new CustomEvent('AnyName' ,{ 
+	details: {userName:userName}
+	bubble:true
+	composed:true
+})
+
+this.dispatchEvent(ev);

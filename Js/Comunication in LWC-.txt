@@ -7,6 +7,69 @@ and in the parent component,bind the child components public property to a value
 2)child-to-parent communication-IN LWC child components cannot pass data to parent components directly using properties.instead child components need to dispatch an event with data.
 
 and parent need to be configured with a listner to listen to the event for the child component
+whaterver the event is we always have to write it as onMethod()
+
+
+eg-
+Child Element-
+Html:
+<template>
+    <lightning-card title="Child Component">
+        <lightning-input 
+            label="Enter Your Name"
+            title="enter Your name"
+            lwc:ref="nameRef">
+        </lightning-input>
+        <lightning-button 
+            label="Submit"
+            vairent="Brand"
+            title="Submit"
+            onclick={submitclick}>
+        </lightning-button>
+    </lightning-card>
+</template>
+
+js:
+import { LightningElement } from 'lwc';
+
+export default class CchildComp extends LightningElement {
+
+    //i will refrence the value to access the lightning input 
+    //after then i will fire the event which will be of custom type
+    submitclick(event){
+        this.userName=this.ref.nameRef?.value;
+        const ev=new CustomEvent('usernamechange',{
+            detail:{userName:userName}
+        });
+        this.dispatchEvent(ev);
+    }
+}
+
+
+parent Class-
+html:
+<template>
+    <lightning-card title="Parent Component">
+        <div>
+            <H1>Entered Name Is: {data}</H1>
+        </div>
+        <c-cchild-comp usernamechange={displayValue}>
+        </c-cchild-comp>
+    </lightning-card>
+</template>
+
+js:
+import { LightningElement } from 'lwc';
+
+export default class BparnetCom extends LightningElement {
+    data;
+    displayValue(event){
+        this.data=event.detail.userName;
+    }
+}
+
+
+***************************
 
 3)Sibling component communication-Communication between sibling components can be achieved through their common parent by passing data via events.the parent components listens for event from one sibling component.when the evnt is triggered,the parent component updates the relevant property of the other sibling component
 

@@ -1,0 +1,121 @@
+Triggers-
+1)performs Custom Action before or after any changes made to salsfore record
+2)Trigger are availabe on object level,u can write trigger for all objects
+3)Trigger are bulk triggers by default,which means they are capable of handling multiple records at a time
+
+Trigger Events-
+Before INSERT After
+Before UPDATE After
+Before DELETE After
+       UNDELETE After  --> Use to restore data from Recycle Bin 
+
+Syntax-
+trigger TriggerName on ObjctName(Trigger Event){
+	//code
+}
+
+Note-Database changes are automatically rollbacked if trigger doesn't run succesfully
+
+**************
+Context Variables-They are use to tell the system how to trigger is fired ,and they are always used with Trigger.isInsert
+
+1)Trigger.isInsert-Returns True if the trigger is fired after the insertion operation
+
+2)Trigger.isUpdate-Returns True if the trigger is fired after the Update operation
+
+3)Trigger.isDelete-Returns True if the trigger is fired after the Delete operation
+
+4)Trigger.isUndelete-Returns True if the trigger is fired after the record is recoverd from the recycleBin
+
+5)Trigger.isBefore-Returns True if the trigger is fired before any record were saved
+
+6)Trigger.isAfter-Returns True if the trigger is fired after all the records are saved
+
+7)Trigger.Old-Return old version of sObject records
+(Availablity-Update,Delete)
+
+8)Trigegr.oldMap-Retrurns the old Ids and sObject records
+(Availablity-Update,Delete)
+
+9)Trigger.size-Reuturns the total size of the new and old records
+
+10)Trigger.New-Return new version of sObject records
+(Availablity-Insert,Update,Undelete)
+
+11)Trigger.newMap-Retrurns the new Ids and sObject records
+(Availablity-After Insert,Update,Undelete)
+
+
+
+*******************
+Trigger TriggerName on Account(Before INSERT, After INSERT){
+	if(Trigger.isInsert){
+		if(Trigger.isBefore){
+			//code
+		}
+		else{
+			//code
+		}
+	}
+	
+}
+
+ORRRRRR
+
+Trigger TriggerName on Account(Before INSERT, After INSERT){
+	if(Trigger.isInsert || Trigger.isBefore){
+		//code
+	}
+}
+
+**************
+Consideration-
+1)You cannot use DML on Trigger.New trigger.Old Varialbes
+2)Trigger.Old is always read only
+3)We can use Trigger.new in Before Context to Update values but not in AFTER context
+
+3 eg- Before Update ,After Update
+if(Trigger.isUpdate){
+	if(Trigge.isBefore){
+		//we can change the values
+	}
+	else if(Trigger.isAfter){ -->read Only Mode
+		//it gets into read-Only Mode
+	        //We can only change the child records data
+	}
+} 
+
+******
+if the trigger is fired with before event then the record is save to the database but it is not commited yet.(So we can do all the modification to the record)
+
+Once it is commited then we can use After Event (which is REad only mode)
+
+
+Execution-->WorkFlow Rules-->Escalation Rules-->Processe and Flows-->Triggers Before and After-->entitlement Rules
+**********
+
+Before Trigger-Use before trigger if you want to set some additional vales to the record thats getting saved or if you want to validate and avoid bad data in the system and throw some errors to the end users
+
+After Trigger-If you want to use DML operation on related records or unreleted records.it could also be any kind of post processing logic,like firing patform events invoking 
+
+********8
+we just get 150 DML and 100 SOQL per transitions, if we exceed this then the governer limit is hit
+
+-dont use DML operation in a loop (especially in for loop)
+- if you want to make changes to the same record, you don't have to write a DML command 
+
+*********8
+
+Map<id,String> -->Map<key,value>-->Map methods
+1)values()-returns all the values
+2)KeySet()-return the set of keys that the map contains
+3)put()-It allows to add new Key-values Pairs
+4)clear()-Deleting Every pair of keys-values from map
+5)size()-returns the total number of key-value pairds
+6)isEmpty-returns true if the map has no key-value pairs
+7)clone()-returns a duplicate copy of the map
+8)containsKey(key)-returns boolean value if the key is present
+9)get(key)-return the value associated with that key
+
+
+ 

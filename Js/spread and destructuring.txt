@@ -1,0 +1,232 @@
+spread Operator: (...)
+Expanding String,Cobining Arrays,combining Object,Creating new shallow copy of a Array and Object
+
+-Expanding String
+let greeting ="Hello Everyone"
+let charList=[...greeting]
+output= h e l l o E v e r y o n e
+
+-Combining Array
+let arr1=["instagram","Facebook"]
+let arr2=["Amazon","Whatsapp"]
+let arr3=[...arr1, ...arr2]
+
+-adding values to an array-we can also use push or pop
+let arr1=["A","b","c"];
+let arr2=["aashiv", ...arr1]
+
+-combining objects
+obj1={
+	name:'Salesforce',
+	age:23,
+	date:"23/10/1999"
+}
+
+Obj2={
+	name:'Facebook',
+	age:23,
+}
+Output=name=facebook, age=23, date="23/10/1999"
+
+-Creating shallow copy
+var arr1=["x","y","z"];
+var arr2=[...arr1];
+arr2.push("Aashiv")
+console.log(arr2);
+output="x","y","z","Aashiv"
+
+
+Destructuring :
+The destructuring assignment syntax is a JavaScript expression that makes it possible to unpack values from arrays, or properties from objects, into distinct variables.
+
+-Array destructuring: always use [] brackets
+let arr=["Amazon","google"]
+let [Company1, Company2]=arr
+
+console.log(Company1);
+console.log(Company2);
+
+
+-Object Destructuring: always use {} brackets
+
+let options={
+	title:"Zero To hero",
+	age:23,
+	type:"CRM"
+}
+
+let {title, age, type}= options
+
+
+
+************
+setTimeout=always takes callback Function
+
+setTimeout(function(a){
+	console.log(a);
+},5000)
+
+*************
+String Methods-
+String.length()
+String.charAt()
+String.toUpperCase()
+String.toLowerCase()
+String.concat()
+
+****************
+Array Methods-
+Array.forEach(function(currentValue, index, array))
+
+index=optional
+array=optional
+currentValue=a value of the current element
+function required to run for each array element
+
+
+Array.map()-loops over the array and return newe array based on the value (always return something)
+Array.forEach()-it will just itterate over an array
+Array.reduce()-it will reduce the complete array into a single value
+Array.sort()-sorting of an array
+Array.filter()-return new array with all the elements that satisfy the condition
+Array.every()-returns true/false if every element in the array satisfies the condition
+
+
+*********************
+querySelector()-
+In Js we always use 
+Document.querySelector(selector);	//single elements
+
+But in Lwc we go with
+Template.querySelector(selector);	//Single elements
+
+
+For multiple elemnts
+Template.querySelectorAll(selector);
+
+************
+Events=
+Html
+<button class="FirstClass" onClick={handlerClass}>Click</button>
+js-
+handlerClass(event){
+	console.log(event.target.value);
+}
+
+
+Eventlistner
+Html-
+<button>Click<button>
+
+js-
+function firstFunction(){
+	console.log("Hurry");
+}
+
+let btn=document.querySelector("button");
+btn.addEventListner("click",firstFunction)
+
+Custom event-
+
+******************
+Naming convection:
+camelCasing-
+helloWorld
+
+PascalCasing-
+HelloWorld
+
+KebabCasing-
+aashiv-more
+
+***************
+Two way data binding-
+
+***********
+@track Property-
+when a field contains an object or an array,there a limit to the depth od chanes that are tracked .to tell the framework to observe changes to the properties of an object or to the element of an array,decorate the field with @track
+
+It is reactive in nature
+
+********************
+Getter-
+if there is some mathemitical operation we cannot directly write it in html,or if there is a array values then we cant directly wriete it in html,
+so we need to put it in a get method
+
+*************
+conditional Rendering
+html:
+<template if:true={expression}>
+	show if the expression is true
+</template>
+
+<template if:false={expression}>
+	show if the expression is true
+</template>
+
+***************
+Looping-
+html:
+laptop=["Acer Nitro","Rog","Omen"]
+<template for:each={laptop} for:value="i">
+	<div key={i}>{i}</div>
+<template>
+
+Iterrator Loop:
+	we use iterrator loop when we want to itterator over a array and we want to perform the operations with the first and last value
+
+you can also use Iterator Loop=
+<template iterator:iteratorName={array}>
+	
+</template>
+
+iteratoreName=i
+
+Properties=
+value= i.value.propetyName
+index= i.index
+first= i.first
+last= i.last
+
+**************
+component Compositions=
+how to refer the child componets name in parent components
+
+eg-
+childComponent= <c-child-component></c-child-component>
+sampleDemoLWC= <c-sample-demo-l-w-c></c-sample-demo-l-w-c>
+
+**************
+shadow dom=
+shadow dom brings encapsulation conept of HTML which enables you to link DOM to an element
+
+Element
+	Elemnt
+	Shodow Host
+
+Shadow Host
+	element
+	element
+
+Benifits=
+	DOM queries
+	event propogation
+	Css rules cannot go to the other side of the shadow boundary
+
+
+const elem=document.querySelector('#host');
+const shadowRoot=elem.attachShadow({mode:'open'});
+shadowRoot.innerHTML='<p> I am shaodw DOM </p>'
+
+
+
+*************
+
+Component LifeCycle Hook
+
+*******
+api decorator:
+to make a field/property or method public decorate it with @api decorator
+-public property is reactive in nature and if the value of the property changes the component template rerenders
+
+

@@ -81,20 +81,3 @@ Calling-
 AsyncApexJob aaj = [SELECT Id, Status, JobItemsProcessed, TotalJobItems, NumberOfErrors  FROM AsyncApexJob WHERE ID =: batchprocessid ];
 
 ***********************
-lwc:ref = it is a simplest way to query any dom element in lwc
-
-to call this
-Html-
-<lightning-input lable="Name" lwc:ref="nameRef"></lightning-input>
-<lightning-button label="Submit" class="slds-grid" onclick={submitHandler}></lightning-button>
-
-Js-
-submitHandler(){
-	const name=this.ref.nameRef.value
-	//i am refrencing to the lightning-input field
-}
-
-
-*************************
-
-

@@ -1,0 +1,682 @@
+What is Governor Limit??
+
+1)What is Salesforce Admin?
+Salesforce Admin you hold a very important responsibility to correctly setup the Customer Org, their roles/ responsibilities, and Hierarchy in the system. You also setup which login user should see what kind of data- controlling the visibility of the screens, etc. Setting up oauth, managing and setting up dashboard, reporting and any outbound/inbound communication channel setups, etc
+
+2)What is cloud Computing?
+Cloud computing is a way to access information and applications online instead of having to build, manage, and maintain them on your own hard drive or servers. It’s fast, efficient, and secure.
+
+Simply put, cloud computing is a way of accessing services on the internet instead of on your computer. You can use the cloud to access applications, data, and development tools from virtually anywhere. Whether you’re working on your phone from a crowded train in Chicago or on your laptop at a hotel in Hong Kong, you can access the same information because it all lives online.
+
+3)What is Paas, Saas, Iaas?
+IaaS (Infrastructure as a Service) – Here, cloud service providers largely focus on infrastructure services like hosting, server, storage services, etc.
+eg-AWS, Cisco
+
+SaaS (Software-as-a-Service) – SaaS is a software delivery model in which software is licensed on a subscription basis and hosted centrally.
+eg-Dropbox, Salesforce,
+
+PaaS (Platform-as-a-Services) – This is a category of cloud computing services that provide a platform allowing customers to develop, run, and manage apps.
+eg-Amazon Web Services (AWS) ,force.com,Heroku
+
+4)What is Sandbox and the Type of Sandbox in Salesforce?
+A Salesforce sandbox is Replica of your organization’s production environment that is used for development and testing purposes. Your production environment has your live data and active users logging in. A Salesforce sandbox will always include a copy of your production organization’s metadata
+
+5)There are 4 types of Salesforce sandbox environments.
+
+Developer Sandbox=Same as Your Production<data storage 200mb>, (metaData), refresh 1 days
+
+Developer Pro Sandbox=Same as Your Production<data storage 1gb>, (metaData ), refresh 1 days
+
+Partial Copy=Same as Your Production<data storage 5gb>, (metaData and sampleData), refresh 5 days
+
+Full Sandbox=Same as Your Production, (metaData and all data), refresh 29 days
+
+
+6)What Are Salesforce Record Types?
+Salesforce Record Types are a way of grouping many records of one type for that object. These can be applied to any standard or custom object, and allow you to have a different page layout, fields, required fields, and picklist values.
+
+They should be used for records that have the same concept, but need to be different in execution. 
+“Record Type” can be used as a criteria in validation rules, formula fields, flows, and more. 
+
+7)What is Object in Salesforce?
+Objects in Salesforce are used as database tables that are used to store information about an organization. We have two types of objects in salesforce, they are.
+
+Standard Object: These are the objects provided by the salesforce, which include contacts, accounts, opportunities, leads, cases, campaigns, products, contracts, dashboards, etc.
+
+Custom Object: This includes the modifications made to the Salesforce by users. It stores the essential and unique information of an organization. Custom Object includes page layouts, relationship to other objects, custom user interface tab, custom fields, etc.
+
+8)What are the different types of object relations in Salesforce
+The different types of object relationships in Salesforce are:
+
+Master-Detail Relationship (1:n):- It is a parent-child relationship in which the master object controls the behavior of the dependent child object. It is a 1:n relationship, in which there can be only one parent, but many children.
+The master field cannot be empty.
+
+-If a master record is deleted, the corresponding dependent object record are also deleted.
+-This is called a cascade delete.
+-Dependent fields will inherit the owner, sharing and security settings from its master.
+-You can define master-detail relationships between two custom objects, or between a custom object and standard object as long as the standard object is the master in the relationship.
+-You can create Roll-up summary fields in master records which will calculate the SUM, AVG, and MIN of the child records.
+
+Lookup Relationship (1:n): Lookup relationships are used when you want to create a link between two objects, but without the dependency on the parent object. Similar to Master-Detail relationship, you can think of this as a form of parent-child relationship where there is only one parent, but many children i.e. 1:n relationship.
+-Deleting a record will not result in automatic deletion Child record.
+-Neither will the child fields inherit the owner, sharing or security settings of its parent.
+
+Junction Relationship (Many-To-Many): This kind of a relationship can exist when there is a need to create two master-detail relationships. Two master-detail relationships can be created by linking 3 custom objects. Here, two objects will be master objects and the third object will be dependent on both the objects. In simpler words, it will be a child object for both the master objects. (2 parents 1 child)
+
+Self Relationship : A Self-Relationship is a lookup relationship to the same object. It is this premise that allows users to take the object “Merchandise” and create relationships with other objects.
+
+9)What is a junction object in Salesforce?
+
+Junction objects are useful in building many-to-many relationships between objects in Salesforce. Take an example of recruiting application, where a position for a job is linked to many candidates or a candidate can apply for many other jobs. Here object “job application” is referred to as a junction object in order to connect the data model. In this example, “job application” is the junction object.
+
+10)How many LR(lookup relationship) fields can be created in an object?
+Maximum 40 Lookup relationship fields can be created in an object.
+40/object
+
+11)How many way to create What is a Roll-up Summary field?
+If the default Max Roll-Up Summary Field limit per object increased from 10 to 25 in the Winter ’16 release. Hard-coded limit for roll-up summary fields is 40 per object
+40/object
+
+12)What is a Roll-up Summary field?
+A roll-up summary field is one that aggregates data from a child object to a parent object that shares a Master-Detail relationship.The detail record must be related to the master through a master-detail relationship.
+
+13)What is field dependency?
+Field dependencies in salesforce used to control the visibility of picklist values on one object based on another object. The object which controls the visibility of other objects we called as controlling object and object which get controlled called as Dependent object.
+
+14)Record?
+It is the instance of the object
+
+15)field?
+It is use to store the datatype
+
+16)What is whoId ?
+it refers to the individual eg-aashiv
+
+17)What is WhatId?
+it refers to Company /account
+related to Infosys
+
+-WhoID refers to people. Typically: contacts or leads. Example: LeadID, ContactID
+-WhatID refers to objects. Example: AccountID, OpportunityID
+
+18)What is App?
+collection of logical componetns such as object,tabs,reports
+
+19)Tabs-It is like user-Interface that is use to build a record for object , and to view the record in that object
+-Custom Object Tab
+-Web Tab=to view external web content
+-Visualforce Tab=ro leverage visualforce page
+
+20)What is sObject?
+Any object type that can be stored in the Salesforce database
+
+21) How to delete or freeze users in Salesforce.com?
+Deleting a user is not possible in Salesforce.com, but we can deactivate the user by using the Freeze option.
+
+To freeze a user, go to:
+Setup > Manage Users > Users
+
+Security And Access
+1)What is the difference between Role and Profile
+Role-
+-The role defines what a user can see in the Organisation
+-Based on the hierarchy,the user can see the data
+-Defining role is not mandatory
+Controls-Records,folders
+
+Profile-
+-the profile defines what a user can do in the organisation
+-profile defines collection of settings & permisions
+-Defining profile is mandatory
+Controls-Object,field level security, page layouts
+
+2)What does profile controls?
+Page Layout
+Tabs
+Object Level-CURD operation
+field Level
+Record Type
+Login Hours
+Custom Apps
+
+3)What types of profiles are available?
+-Standard Profile=Which are pre defined by Salesforce
+System Admin-view+modify All+customize App
+Being a admin i can view ,modify and customise the apps as i wanted
+Standard User-view+Modify All accessible Records
+being a standard user i can view and modify the data which i have permission/access to
+Solution Manager-Standard User+Manage publish solution
+Marketing Manager-Standard User+Import Lead
+Contract Manager-Standard User+Manage Contract
+Read Only-View All accessible records
+
+-Custom Profile
+
+4)why do we need a profile?
+It restrict the user to do some work in an org
+
+5)What are Permission sets?
+A Permission Set is a collection of settings or permissions that is used to give access to numerous tools and functions for the user. You can use permission sets for different types of users to extend functional access without changing their profiles. Instead of creating a separate profile each time, you could easily create a Permission Set.
+
+6)how many profiles and permission set a user can have?
+A user can have just a single profile and can have multiple permission set 
+
+7)how many permission set we can have in a org?
+we can have 1000 permission set in an org
+1000/org
+
+8)how many types of permission set are there?
+App Permission=
+-Assigned App (sales,marketing)
+-Custom Permission
+-App Permission
+-Object Access
+-Apex Class Access
+-Visualforce Page Access
+-Name Credentials Access
+
+System Permission=
+-Desktop Access
+-login ip range
+-login hours
+-session timeout
+
+eg-suppose there are total 10 apex classes and i want to give access of 2 Apex class to a user then "use Apex class Access",to view that apex class use "Visualforce Page Access",now this 2 Apex class will have some Fields and Object, so we will give the access of "Object Access" and "Field Access",also if this object comes in Sales app then will be giving "App permission"
+
+9)What is permission set group?
+Permission set groups combine selected permission sets to provide all the permissions that users need for their roles.
+
+9)What is use of muting permission set in permission set group
+By Adding Muting Permission in permission set group we can switch off/turn off/remove particular permission/Setting within a group without affecting the rest of the permission sets within the group
+
+10)Level of security in Salesforce?
+-Org level Security
+-object level security
+-field level security
+-record level security
+
+11)What is Org Level Security?
+Login:
+-When a user login
+-It generates cookies
+-if user login again then it verifies cookies ,if it recognises cookies then user login 
+-if not then the user has to enter the verification code
+
+Trusted ip:
+-Set ip range
+
+Login Hours:
+-9-5 login hours (can be controlled by profile)
+
+Health check tool:
+it is a tool to check the security profile against salesforce baseline security guidlines
+(high Risk,low risk)
+
+12)What is Object level Security
+-CRUD, view and Modify All
+-mass crud is only for 200 records at a time
+
+13)What is Record Level Security
+OWD-->Role Heirarchy-->Sharing Rule-->Manual Sharing
+
+-Role Hierarchy:
+-whenever a user is added to a role, the user above the current user in the hierarchy of the role will have access to reading the records and inherating the permissions
+
+-it is controlled by Roles,permission to view and edit the specific record
+-Data Access Models:
+	-Public
+	-private
+	-hybrid(public+private)
+
+-Owd:()Organisartion wide default
+Owd lets admin choose who can see records in salesforce,so that only authorized users have access to the data
+-It is the most strict type of model
+-Baseline level of access to record (default access for object and records)
+-private (most strcit one)
+-public read only
+-public read write
+-public read write transfer (available for lead & case record only)
+
+
+14)OWD sharing settings-
+It exists for both standard and custom object
+
+Private-with this setting,only the record owner & user heigher up in the role hierarchy can access the record
+
+public read only- this setting permits all organisation users to view the record but not edit or delete them,heigher heirarchy can modify record
+
+public read write only-with this setting,all users in the organisation can view,edit and delete record.while user cannot transfer ownership
+
+public read/write/transfer-this setting is the most lenient,allowing users to view,edit,remove and change ownership
+
+15)What is sharing rules? (CO) carbon di oxide
+there are 2 types of sharing rules:
+-Owner Based Sharing Rules
+-Criteria Based Sharing rules
+
+Owner based Sharing rules-it opens access to records owned by certain users
+
+16)Criteria Based Sharing Rules-if we want to share record based on condition such as share records with a group of users with the criteria of the country is india
+
+17)Manual sharing:
+-Manual sharing is sharing a single record/file to a single user or group of users through manual access.
+-We can see a button for manual sharing on the detail page of the record and it can be seen only when the OWD setting is private.
+
+18)Apex sharing:
+-Sharing object is available for each and every object in Salesforce. For example, the Account object’s share object is AccountShare.
+-By using Apex, if we want to share the records then we have to create a record to the shared object.
+
+19)What are Audit Fields in Salesforce?
+Audit Fields in Salesforce are special fields that track information about your records that can be valuable for audit purposes. Typically these fields include: CreatedByID. CreatedDate
+
+20)What is an Audit trail? 
+The Audit trail in Salesforce is a unique feature that helps in tracking the changes that have been made in the organization by you and other administrators. It would be helpful for the organization with more administrators. This audit trail shows you the information of the twenty most recently made changes in your organization. 
+
+21)What is a Queue in Salesforce?
+Prioritize and assign records to teams that share workloads. There’s no limit to the number of queues you can create, and you can choose when queue members receive email notifications.
+
+22)What is a Public Group ***
+Groups are sets of users. They can contain individual users, other groups, the users in a particular role or territory, and/or the users in a particular role or territory plus all of the users below that role or territory in the hierarchy.
+
+23)What are Validation Rules?
+Validation rules allow you to enforce specific business logic to help with your org’s data integrity. You can specify conditions on an object that aren’t allowed to exist.
+
+For example, if you don’t want a user to mark an Opportunity as Closed Won if the account doesn’t have a billing address, you can add a validation rule so that when a user tries, it won’t update the Opportunity record and displays an error message explaining what they need to do.
+
+24)Mention various types of sharing rules in Salesforce.
+There are a few sharing rules in Salesforce available which are as follows:
+
+Account sharing Rule.
+Case Sharing Rule.
+Contact Sharing Rule.
+Custom Object sharing Rule.
+Lead Sharing Rule.
+Opportunity sharing Rule
+
+25)What is the Formula field?
+A Formula field is a read-only field that is coupled with a formula or expression from which its value is calculated. With the corresponding modification in the formula or expression, the value of this type of field is immediately changed. This field can be created using both standard and custom objects.
+
+
+
+Data Management Salesforce
+1) What is cascade deletion?
+Cascade deletion happens when the relationship is master-detail. If parent get deleted then automatically child’s records also get deletes
+
+2)Way to clean data in Salesforce
+Validation – Using Validation in Salesforce is a great way to keep data clean. This can come in a few different forms such as required fields, using picklists over free text fields, validation rules, as well as setting correct permissions. All of the mentioned features are simply trying to ensure that users can only enter data they should be entering. This is one of the most effective prevention methods for bad data.
+
+Duplicate Management – A common issue for users and admins using Salesforce, is duplicates. They can come from various sources including an initial data load, marketing leads (events/website), or users themselves manually entering them. Salesforce has various simple but powerful duplicate tools to prevent this.
+
+Deduplication Tools – If bad data has become such a problem and is beyond repair, luckily there are AppExchange Apps that can help.
+
+3)Difference Between Data Import wizard and Data loader
+Data Import Wizards:
+-for simple import of data
+-it can load up to 50,000 records
+-it supports all custom object and only few standard objects
+-it support schedule export
+-delete operation is not available
+-cannot import cases and opportunity
+-while importing, duplicates can be ignored
+-it does not requires installation
+
+Data loader:
+-for complex import of data 
+-if can load up to 5,00,000 records
+-it supports all custom and standard objects
+-it does not support schedule export
+-delete operation is available
+-can import cases,event,tasks and opportunities
+-while importing,duplicates cannot be ignored
+-it requires installation
+
+4)What is “Data Skew” in Salesforce
+In Salesforce, Data skew is a condition which you will occur when working for a big organization when there are more than 10,000 records. So, when users perform updates,performance issue will be encountered. It happens because of data skew.
+
+5)Mention some CRM providers
+The popular CRM providers are:
+
+Oracle CRM
+Microsoft Dynamics CRM
+Salesforce CRM
+SAP CRM
+NetSuite CRM
+Sage CRM
+SugarCRM
+
+6) What is a custom metadata type?
+The custom metadata type stores information about an organization. It is a type of custom object that can be customized, deployed, packaged, and upgraded. It helps use data for configuring the application without worring about data migration. Rather than transferring the custom metadata type manually, it can be deployed using a Sandbox.
+
+
+
+Report And dashBoard Salesforce
+1)what is Report and Dashboard
+a report contains much more detailed information.Vast Information related to a perticular thing,Reports are much longer than a dashboard (visually and In terms of Details)
+
+Where a dashboard might only provide a CEO with information on how the entire company’s sales are progressing, a corresponding report will give the CFO or VP of Sales the ability to see how each sales region, or even sales person is performing and make leadership decisions.
+
+2)difference between static and dynamic dashboard in salesforce?
+Static DashBoard:
+-These are the default dashboards that are visible to any user
+-It is used to show organizational wide data to a set of user
+-It can be scheduled to autoatically refresh its data
+
+Dynamic DashBoard:
+-It showa data tailored for a specific user
+-it is used to show a single user's specific data,such as the sales closed, lead converted, etc
+-we can't schedule dynamic dashboard bcuz when the dashboard is opened by us,it will display the real-time generated data
+
+Two setting options are there in dynamic dashboards:
+Run as a specified user
+Run as the logged-in user
+
+3)What are the different types of reports available in salesforce?
+Reports:
+Reports will give a clear picture to the management. Management will make use of reports to track progress towards its various goals, increase revenue, and control expenditure. Reports will also help to predict trends and thus gives the advantage of the increase in profits.
+
+MJ ST
+Matrix, joined, summary, tabular
+Matrix report:
+A report is formed by grouping the records by rows as well as columns. It is used when you want to see data by two separate dimensions that aren’t related, such as date and product.
+Example: Summarize opportunities by account horizontally and by month vertically.
+
+Summary report:
+A report that provides a listing of data with groupings and subtotals. It is used when subtotals are needed, based on the value of a particular field, or when you want to create a hierarchically grouped report.
+Example: All opportunities for your team subtotaled by owner and sales stage.
+
+Tabular report:
+A report that provides details of a company in tabular format. It is used when you want a simple list or an item list with a grand total.
+Example: These reports are used to list all accounts, list of opportunities, list of contacts, etc.
+
+Joined report:
+A report that is created by the mixture of any combination of reports. Like matrix report plus summary report can give you a joined report. Also, matrix reports and tabular reports can give a joined report.
+Example: You can develop a report to display opportunity, case, and activity data for your accounts
+
+4)What is Report Type?
+The report type is simply a template in Salesforce which is built based on objects and relationships in between objects and fields. Every report in Salesforce can be created only based on the report type.
+
+5)What is a bucket field in reports?
+A bucket field lets you group related records together by ranges and segments, without the use of complex formulas and custom fields. Bucketing can thus be used to group, filter, or arrange report data. When you create a bucket field, you need to define multiple categories (buckets) that are used to group report values. The advantage is that earlier, we had to create custom fields to group or segment certain data.
+
+6)Distinguish between Salesforce.com and Force.com.
+Both are relatively the same but different in their functionality.
+
+Salesforce.com helps build CRM-functionality-based applications, e.g., an iPhone ‘app’ that stores contact details, makes phone calls, and has all the other standard functions of a phone.
+Force.com is used to customize a data model and a user interface, e.g., an iPhone OS environment that can build and run apps.
+
+7)Expand and explain CRM.
+The expansion of CRM is ‘Customer Relationship Management.’
+
+CRM is an application that helps automate systems or digitize marketing functions. With this software, companies can plan to increase their profits and revenues. This strategy of incrementing revenue and profit is made by attracting customers, clients, and sales. The important concept of CRM is customer value.
+
+8)Who can access the drag-and-drop dashboard?
+The one who has in managed dashboards can access the drag-and-drop dashboard
+
+9)What is the difference between managed and unmanaged packages?
+Managed Package:
+-The code and metadata cannot be changed
+-The solution is upgraded by the provider
+-there is no limit for the usage of apps,tabs & object
+
+Unmanaged Package:
+-The code and metadata can be changed
+-we need to replace the older version with the new version
+-The package set limit for the usage of apps,tabs and object
+
+10)What is a Page Layout?
+At a high level, a page layout controls which fields are visible for a specific record, but they control more than that. They can also control which fields are editable or required. Additionally, page layouts control buttons, related lists, and some other elements.
+
+
+Automation Flows
+Flow: also called as (Lightning Flow,visual Workflow)
+Flow is a powerful automation tool that allows you to create custom, multi-step processes to automate complex business processes.
+
+Types:ssr rap
+Screen flow-guide a user through a busines process
+
+schedule triggered flow-launches at a specfic time and frequency for each record in a batch,this autolaunched flow runs in a background
+
+record triggered flow-launches when a record is created,updated or deleted,this autolaunched flow runs in a background
+
+platform event triggered flow-Launches when a platform event message is received.
+
+autolaunched flow (No trigger)-launcheds when invoked by apex,processes,Rest Api etc
+
+record triggered orchestration-launches when a record is created or updated,an orchestration lets you create a multi-step, multi-user process
+
+Process:
+-Select one type of flow (Free form,Auto form)
+-Interactions=Action,subFlow,Custom Error
+-Logic=Assignment,decision,loop,collection sort
+-Data=Create a Record,update Record,delete ,get record
+
+Disadvantages:
+Limitations are the same as process builder. There’s a large graph, so do not expect an easy-to-use wizard-style screen like the Process Builder. Again, processes can easily be broken.
+
+
+Workflow rules:
+-Workflow is a basic automation tool that allows you to create simple rules to automate standard internal procedures and processes.
+
+Process:
+-Select Object on which you need to apply workflow
+-Evaluation Criteria=created
+	=created and every time its edited
+	=created and any time its edited to subsequently meet crtria
+
+-rule criteria=criteria are met
+	formula evaluates to true
+-Action=Imediate action/time dependent workflow action
+	=New task  	fuck(toe)
+	=new email alert
+	=new field update
+	=new outbound message
+timedependent workflow action=Add time trigger
+
+
+Process Builder:
+-Process Builder is a more advanced automation tool that allows you to create complex automated processes. 
+
+Process:PRP (RRR)--> Triangle Diagram 
+-Give a Process name,api name description and specify when the process starts (A record changes,A platform event mesage is received,its invoked by another process)
+
+ (we can add multiple if criteria)
+-Start-->add Object-->Add criteria-->true-->
+imediate Action/scheduled Action-->stop
+-->false-->stop
+
+-Add Object=Only when a record is created,
+	   =when a record is created or edited
+
+-Criteria Name=Conditions are met
+	=formula evaluates to true
+	=no criteria-just executes the action
+
+-Imidiate/scheduled Action
+	=Apex,create a record,update a record,email alert,flows,post to chatter,proccess,quip,submit for approvl
+(ARE fps)
+
+Disadvantage oF Process Builder:
+-You can not edit a process once it’s saved. For editing, you need to clone it first.
+-Some standard fields (activity due date) for instance are still not able to be updated if they cannot be updated via standard workflow.
+-It can not send outbound messages.
+
+
+
+
+
+
+************************************
+Workflow vs Process builder:
+-Both process builder and workflow are automation tools that execute whenever the records get created or edited. But the difference is workflow is an old-school automation tool, process builder gives you a user-friendly visual representation of the process as you build it.
+-you can do more with process builder as compared to workflows so in workflows we have four types of actions: Send an email, Field update, Task, Outbound message, and process builder we have 8 types of actions that are: Create a record, Update a record, Post something on to chatter, Launch a flow, Launch a quick action, Submit automatically for the approval, Call an apex code, Invoke another process.
+-Outbound messages can not be sent using process builder for that you’ll have to go for the workflow rules.
+-Process builder allows you to control the order of different actions like at which criteria which action gets executed and after that this criteria should be evaluated. You’ll be able to control the evaluation criteria of the processes using process builder which you’re not able to do with workflow. For example, if you created four workflow rules on a single object which one is gonna execute first and which gonna execute next you can’t predict that. But in process builder, we can decide the order of execution.
+ 
+
+Process Builder vs Flow:
+-Flow Builder can launch a chain of flows based on the results of the preceding one. Process Builder can trigger a flow, but it is less powerful and can’t launch a process depending on another process.
+-Flow is faster than process builder.
+-Flows are less time-consuming and very efficient than Process Builder (based on how you build logic) so it should be made allowance for if you are building multi-node process builders.
+
+
+Also do Approval Process
+
+
+************************************
+
+Senario Based Questions
+
+***********************
+Apex Programming:
+
+1)What is Governer Limit?
+Because Apex runs in a multitenant environment, the Apex runtime engine strictly enforces limits so that runaway Apex code or processes don’t monopolize(control) shared resources. If some Apex code exceeds a limit, the associated governor issues a runtime exception that can’t be handled.
+
+2)How Many DML Can we Write in Apex?
+150
+
+3)How many SOQL can we write in Apex?
+100
+
+4)What is Apex trigger?
+perform some action before or after any changes are made to the salesforce record 
+trigger are available on Object level
+trigger are bulk trigger by default,which means they are capable of handling multiple records at a time
+
+5)What does bulkiffication means?
+Bulkification is the process of ensuring the Apex code properly handles more than one record at a time. When a batch of records initiate Apex, a single instance of that Apex code is executed, but that code must have the capacity to handle all the records in that given batch.
+
+6) What are the two types of triggers in Salesforce?
+There are two types of triggers in Salesforce.
+
+Before triggers are used to perform a task before a record is inserted or updated or deleted in Salesforce. These are used to update or validate record values before they are saved to the database.
+After triggers are used if we want to use the information set by Salesforce system and to make changes in the other records. The records that fire the after trigger are read-only.
+
+7)What are different events available in Triggers?
+An Apex trigger is a set of the statement which can be executed on the following events. We can add the below events with comma-separated. Here is a list of trigger events in Salesforce.
+
+before Insert after
+before Update after
+before Delete after
+before Undelete after
+
+8)When we should use trigger or automation?
+Use Salesforce flow for most of the automation in salesforce and use Apex Trigger for complex logic which can’t be done using Flow.
+
+9)How many times trigger execute on an Upsert event
+Upsert trigger fires on 4 different events :- before(insert, update), after (insert, update)
+
+10)Order Of Execution?
+Validation Rule-->Before Trigger-->Custom Validation Rule-->Duplicate Rules-->After Trigger-->Assignment Rules-->Auto Response-->Workflow-->process-->escalation rules-->rollup Summery
+
+11)When you will choose before the event and when you will choose after the event?
+Use before the event to update the record which executes the Apex Trigger. Use After the event to use related or child records.
+
+use Before Event when we are dealing with the single object,use after event when we are dealing with the related or child record
+
+12)What is the difference between Trigger.New and Trigger.newMap?
+Trigger.New return the list of SObject which invoke the trigger. Trigger.newMap return the Map of Id and SObject.
+
+13)When we should use Trigger.Old?
+It is always good and recommended to check the old and new values before making any updates in Trigger. You can use Trigger.Old to check the old value of the record. It can help you to stop recursion in Trigger.
+
+14)Difference between Validation rules and Triggers?
+Validation rules are used to confirm that the data entered into a record meet various data quality/business rules before letting the user save it.  Triggers can be used for various different things and can be executed at different times – e.g. when initiating a new record, before saving it, or when a record is deleted.  Validation rules are very easy to create and virtually anyone can learn how to create these.  Triggers are more complex and generally require some development skills.
+
+basically validation rules are use to perform some business logic or the data we enter should meet various data quality(intacts the salesforce data integrity)
+where as Trigger are used when ,a record is initiated,saved or delete, validation are easy to create but the trigger aremore complex and need some developing skills
+
+15)Best practice and consideration for Trigger?
+-One Trigger per Object
+-Bulkify your code
+-Avoid SOQL Queries or DML statement inside FOR loop
+-Avoid Hard-Coded IDs
+-Avoid Nested Loops
+Loops inside of loops – sometimes it can’t be avoided. You simply need to iterate over one thing related to another. Good stuff, right? While there may not seem to be anything immediately wrong here, and the code could very well run perfectly fine without running into performance issues or governor limits, the issue here is more one of maintainability and readability.
+-Avoid Business Logic in Triggers
+-Use @future Appropriately
+It is critical to write your Apex code to efficiently handle bulk or many records at a time. This is also true for asynchronous Apex methods (those annotated with the @future keyword). The differences between synchronous and asynchronous Apex can be found
+
+16)How many times trigger execute on an Merge event
+Merge triggers are fired on both events on the delete.
+
+eg-Before Delete Trigger: Executes once for each of the losing records being merged. If you are merging 2 records into 1, this trigger would execute twice (once for each losing record).
+
+After Delete Trigger: Also executes once for each of the losing records. Using the same example, it would execute twice.
+
+After Update Trigger: Executes once for the winning (master) record after it has been updated with the information from the losing records.
+
+So, the total number of times triggers execute during a merge event depends on how many records are being merged into the master record. For each losing record, you will see a before delete and an after delete trigger execution. And for the master record, you will see one after update trigger execution.
+
+17)What is salesforce trigger Iteration ?
+Recursion occurs when a trigger invokes itself in a loop, leading to repeated execution and potentially infinite iterations. This situation often arises when trigger logic modifies the same records that triggered it
+
+18)What are the types of Salesforce Itteration
+
+19)How to void recursion in Trigger?
+There are different way to stop the recursion in Trigger
+
+-Use Static Boolean Variable: Create a class with a static Boolean variable with a default value of true.
+	This is good for less than 200 records.
+	If we update 200+ records then it will only process the first set of records and skip the others.
+
+-Use Static Set= to Store Record Id: Use static set in class to store all processed record IDs.
+
+20) Can we call a batch job from Trigger?
+Batch Apex can be invoked using an Apex trigger. But the trigger should not add more batch jobs than the limit
+
+21)How make callout from Trigger?
+No, we cannot. The callout is an Asynchronous process whereas the Trigger is Dynamic / Synchronous. Callouts would hold up the database transaction until the callout is completed, which can be up to 120 seconds from a limited perspective.
+
+But using @Future annotation we can convert the Trigger into an Asynchronous Class and we can use a Callout method. 
+
+22)What is the Trigger Handler pattern?
+Please check this post to learn about Handler pattern and code. Let us talk about what is the advantage of Trigger Handler Patter.
+
+-Apex Class that handles trigger logic
+-Allows code to be called from other code or tests
+-Uses specific Trigger contexts and Trigger variables for -routing
+-Keep Triggers Simple
+-Allow for greater flexibility
+-Make code reusable
+-Unit tests are much easier
+
+23)Have you used any trigger framework in Salesforce
+There are 4 types of framework:
+-Trigger handler Pattern
+-Trigger framework using a Virtual class
+-Trigger Framework using an interface
+-An architecture framework to handle trigger
+
+24)how does Apex compiler work
+end user Request someting-->apex Runtime-->apex class
+apex class-->apex Runtime-->gives the result
+
+25)Will Batch Apex RollBack the complete Batch Apex if one transition fails?
+If a transaction fails in batch execution salesforce will rollback the whole batch class,However it will continue processing the next batches.
+
+An alternitive to to avoid rollback is to write a failure handling logic in the finish method of your batch class
+
+26)Can you make callouts in Batch Apex?
+Yes, by implementing the Database.AllowsCallouts interface, Batch Apex can make callouts to external systems.
+
+28)What is the difference between Database.Batchable and @future methods in Salesforce?
+Database.Batchable is used for processing large sets of data by dividing them into manageable batches and executing each batch in a separate transaction, thus adhering to governor limits. On the other hand, @future methods are used for executing small, simple asynchronous transactions that are not bound by the synchronous governor limits.
+
+29)What is the purpose of the Database.Stateful interface in Batch Apex?
+Implementing Database.Stateful allows the Batch Apex class to maintain state across different batches, meaning variable values are preserved between executions of the execute method.
+
+30) How do you schedule a Batch Apex class to run at regular intervals?
+To schedule a Batch Apex class, you implement the Schedulable interface in an Apex class. This class then specifies the frequency and timing of the Batch Apex job using the Salesforce cron expression format.
+
+31)What happens if a Batch Apex job fails? How do you handle errors?
+If a batch in a Batch Apex job fails, Salesforce tries to reprocess it up to a maximum of ten times. Error handling in Batch Apex can be implemented in the execute method using try-catch blocks to catch exceptions and perform appropriate actions, like logging errors.
+
+32)Can you modify the batch size in Batch Apex? How?
+Yes, the batch size in Batch Apex can be modified by passing the desired batch size as a parameter to the Database.executeBatch method. For example, Database.executeBatch(new YourBatchClassName(), 100); sets the batch size to 100 records per batch.
+
+33)The Things that we use in Schedulable apex are called what?
+* ? / 0 0 0 0 0 
+This are called Salesforce cron expressions
+
+34)

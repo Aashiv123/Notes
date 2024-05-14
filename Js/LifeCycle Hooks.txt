@@ -68,7 +68,7 @@ errorCallback(): If an error occurs during rendering, this hook is invoked. It p
 
 -Called when a descendant(Child) component throws an error.
 -Two arguments are passed in errorCallback(error,stack), the error argument is a JavaScript native error object, and the stack argument is a string.
--error isa object and Stack is a String
+-error is a object and Stack is a String
 Stack will show from where this error is comming from, eg <c-first-component></c-first-component>
 
 --Always written to the parent js

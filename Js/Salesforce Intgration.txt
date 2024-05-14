@@ -24,7 +24,7 @@ server a wants to reach/call to b...this is called as api Endpoint
 This call will be hapenning over the web or http callout
 
 Autheriotion-
-before making a call,it will check that wheter the website is autherized or not,then only it will make a call
+before making a call,it will check that whether the website is autherized or not,then only it will make a call
 
 
 
@@ -33,10 +33,11 @@ Rest Api-
 REST API
 This focuses on data-based operations:
 
+(GDP)
 -GET to query a database-retrive the data
 -POST to create a record-insert new data
--PUT to update-insert new data or update existing data
 -PATCH-update existing data
+-PUT to update-insert new data or update existing data
 -DELETE-delete existing data
 
 REST API is best for web or mobile applications. Regarding data formats, it uses XML or JSON. JSON works better with data and is best for web or mobile applications. This means that REST doesn’t use much bandwidth and is easily consumed by web browsers.
@@ -68,10 +69,10 @@ we need to go to Remote site-and pase the link over there for authorization-
 https://api.spoonacular.com
 
 Http http=new Http();
-httprequest request=new httprequest();
+httprequest request=new httprequest();	(callout)
 request.setEndpoint('https://api.spoonacular.com/recipes/random');
 request.setMethod('GET');
-HttpResponse response=http.send(request);
+HttpResponse response=http.send(request); (callout)
 
 if(response.getStatusCode()==200){		-->200=success
 	System.debug('response '+response.getBody());
@@ -96,7 +97,7 @@ HttpResponse response = http.send(request);
 if(response.getStatusCode() == 200) {
     // Deserialize the JSON string into collections of primitive data types.
     Map<String, Object> results = (Map<String, Object>) JSON.deserializeUntyped(response.getBody());
-    // Cast the values in the 'animals' key as a list
+    // Store/Cast the values in the 'animals' key as a list
     List<Object> animals = (List<Object>) results.get('animals');
     System.debug('Received the following animals:');
     for(Object animal: animals) {
@@ -110,12 +111,12 @@ JSON.deserializeUntyped - Deserializes or reconstructs the object model from the
 Rest Annotation-Use these annotations to expose an Apex class as a RESTful Web service.
 
 @ReadOnly
-@RestResource(urlMapping='/yourUrl')
-@HttpDelete
-@HttpGet
-@HttpPatch
-@HttpPost
-@HttpPut
+@RestResource(urlMapping='/yourUrl')=cant have multiple annotated with the same HTTp request
+@HttpDelete=No body,@ReadOnly
+@HttpGet=No body,@ReadOnly
+@HttpPatch=@ReadOnly
+@HttpPost=@ReadOnly
+@HttpPut=@ReadOnly
 
 ***************
 creating authorization Header
@@ -127,3 +128,5 @@ request.setHeader('Authorization',autherizationHeader);
 
 
 Blob- is used to deal with creating PDF or String
+-You can retrieve the body as a Blob from the HttpRequest object if there are no parameters to the Apex method.
+-If parameters are defined in the Apex method, an attempt is made to deserialize the request body into those parameters.
