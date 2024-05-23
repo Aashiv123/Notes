@@ -1,5 +1,6 @@
 spread Operator: (...)
 Expanding String,Cobining Arrays,combining Object,Creating new shallow copy of a Array and Object
+ECC
 
 -Expanding String
 let greeting ="Hello Everyone"
