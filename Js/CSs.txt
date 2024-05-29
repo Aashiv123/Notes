@@ -173,3 +173,19 @@ we Use-
 <p>= paragraph
 <div>= devision
 <img>= insert image
+
+
+Whenever we want to get a html element in js we use
+const elem=document.querySelector('button');
+if we want to change the inner value of html then we will write as
+elem.innerHTML=<p>Changed</p>
+
+but if there is a input text then:
+const elem=document.querySelector('input');
+elem.value;
+
+Also The values that comes from HTML are objects ,which are eventually in the form of
+string
+So to convert it into a proper number:
+we always use Number method
+Number(elem.value);
