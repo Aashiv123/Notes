@@ -189,3 +189,17 @@ string
 So to convert it into a proper number:
 we always use Number method
 Number(elem.value);
+
+
+suppose we have
+<p class='subscribed'>hacker</p>
+if we want to add a class to this p then we will just write elem=document.queryselector('p');
+elem.classList.add('notSubscriberd');
+
+to remove this class
+elem.classList.remove('notSubscribed');
+
+
+-Space inside a element is called padding
+-space outside the element is called margin
+
