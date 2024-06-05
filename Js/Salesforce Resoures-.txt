@@ -27,6 +27,7 @@ Import methods from the platformResourceLoader Module
 import {loadScript} form 'lightning/platformResourceLoader'
 
 loadScript(Reference to the component, fileUrl): Promise
+eg:: loadScript(location of the js file).then(()=>{});
 
 
 eg-moment is a js library that is downloaded and is stored into a folder which is zipped
