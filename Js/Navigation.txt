@@ -1,19 +1,21 @@
 Navigation- it is present in 'lightning/navigation'
-Navigate to home page
+Navigate to home page .
 navigate to chatter
-navigate to new record
-navigate to new record with default values
-navigate to list view
-navigateto files
-navigate to record page in view and edit mode
-navigate to tab
+navigate to new record .
+navigate to new record with default values .
+navigate to list view .
+navigateto files .
+navigate to record page in view and edit mode .
+navigate to tab .
 navigate to record relationship page
-navigate to external web page
-navigate to lwc component
-navigate to aura compoent
-navigate to VF pages
+navigate to external web page .
+navigate to lwc component .
+navigate to aura compoent .
+navigate to VF pages .
 fetch current page refrence
 
+
+tabs-->home-->current page-->new record (basic & default values)-->lwc-->aura-->Vf-->external web page-->list view--> files --> record page (view edit)--> chatter
 ******************
 It is similar to {loadscript}--> {NavigationMixin}
 
