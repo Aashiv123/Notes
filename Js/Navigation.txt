@@ -15,7 +15,7 @@ navigate to VF pages .
 fetch current page refrence
 
 
-tabs-->home-->current page-->new record (basic & default values)-->lwc-->aura-->Vf-->external web page-->list view--> files --> record page (view edit)--> chatter
+tabs-->home-->current page-->new record (basic & default values)-->list view-->lwc-->aura-->Vf-->external web page--> files --> record page (view edit)--> chatter
 ******************
 It is similar to {loadscript}--> {NavigationMixin}
 
