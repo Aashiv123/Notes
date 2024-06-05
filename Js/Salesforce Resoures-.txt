@@ -1,4 +1,26 @@
 Salesforce Resoures-
+Static Resources-
+Images,Current User, recordId, objectApiName, permission, client formFactor
+JS,css, Internationalisation
+label,content Asset, Toast Notification
+
+Images- @salesforce/resourceUrl/imageRefrenceName;
+Current User- @salesforce/User/property
+recorddId- api 
+objectApiName- api
+permission- @salesforce/userPermission/permissionApiName
+client formFactor- @salesforce/client/formFactor
+
+js- it will take the @salesforce/resourceUrl/fileRefrence
+and also- lightning/platformResourceLoader
+
+css-same
+
+Label- custom label- @salesforce/label/c.LabelRefrenceName
+
+contentAsset- @salesforce/contentAssetUrl/nameRefrence
+Toast Notification- lightning/platformShowToastEvent
+
 1)Static Resources-To import static resources we use @salesforce/resourceUrl , We can import .zip .jar images styleSheets. js and other files
 
 import myResource from '@salesforce/resourceUrl/resourceReference';
@@ -75,7 +97,7 @@ promise.all([loadStyle(this.stylingFile)])
 	})
 
 **************************
-4)Content Asset files-
+4)Content Asset files-apps-->asset files
 If the file is already present in the asset file then we can import that file in Lwc using
 
 import myContentAsset from '@salesforce/contentAssetUrl/contentAssetReference';
