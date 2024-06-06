@@ -219,3 +219,11 @@ js-
                 }
             });
         }
+
+
+one/one.app
+Lightning pages are served up from a different server than visualforce pages. The one/one is also a reference to the way Salesforce1 Apps have always been referenced. This is what the Lightning Platform has been built upon which has now been extended to the desktop. More than anything, it's important to remember that Lightning pages are single page apps and individual parts of the page can't be easily referenced directly if multiple objects/pages are contained within the app.
+
+
+btoa
+ creates a Base64-encoded ASCII string from a binary string,basically converts into url
