@@ -203,3 +203,19 @@ navigatToWeb(){
 *****************
 navigate to LWC page-
 js-
+
+         defination={
+            componentDef:'c:nav',
+            attributes:{
+                recordId:'324566323'
+            }
+        }
+
+        navigateToLwc(){
+            this[NavigationMixin.Navigate]({
+                type:'standard__webPage',
+                attributes:{
+                    url:'one/one.app#'+btoa(JSON.stringify(this.defination))
+                }
+            });
+        }
