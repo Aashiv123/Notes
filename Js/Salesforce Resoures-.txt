@@ -140,6 +140,7 @@ import Description_One from '@salesforce/label/c.aashiv'
 
 ************************
 7)Check permissions without writing a code -
+Always use get method to return permission
 in LWC we can check 2 permissions-1) userPermission 2)customPermission
 To know the api name of a user/custome permission name,login to work bench,select standard and custome object,then select profile here will will see all the api name "permissionhadviewDetail"..the api name will be without permission
 api name=hasViewDetails
