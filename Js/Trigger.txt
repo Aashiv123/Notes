@@ -118,4 +118,11 @@ Map<id,String> -->Map<key,value>-->Map methods
 9)get(key)-return the value associated with that key
 
 
- 
+Map<id, String>
+1= aashiv
+2= shivani
+3= sheetal
+4= lavanya
+
+1,2,3,4=> keySet()
+aashiv, shivani, sheetal, lavanya=> value
