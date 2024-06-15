@@ -5,7 +5,7 @@ Count, Email
 parent to child 
 
 
-child to parent
+child to parent--same as before update
 public class firCOnta {
     public static void mainClass(Map<id, Contact> oldList, List<Contact> newList){
      	//update account description when conteact description is updated
