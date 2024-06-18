@@ -144,7 +144,10 @@ let btn=document.querySelector("button");
 btn.addEventListner("click",firstFunction)
 
 Custom event-
-
+let a=new CustomEvent('hello',{
+    detail:{name:'john'}
+});
+this.dispatchEvent(a);
 ******************
 Naming convection:
 camelCasing-
