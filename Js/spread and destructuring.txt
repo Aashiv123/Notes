@@ -9,6 +9,9 @@ for(key in obj1){
 
 }
 
+**************
+We use Array.form to convert a nodeList into a array 
+
 
 
 spread Operator: (...)
