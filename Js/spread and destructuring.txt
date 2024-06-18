@@ -1,3 +1,16 @@
+to itterate over a object just go with for in loop
+obj1={
+	name:'Aashiv',
+	company:'Google'
+}
+
+for(key in obj1){
+	console.log(`The ${key} is ${obj1.[key]}`)
+
+}
+
+
+
 spread Operator: (...)
 Expanding String,Cobining Arrays,combining Object,Creating new shallow copy of a Array and Object
 ECC
