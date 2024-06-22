@@ -1,6 +1,6 @@
 Salesforce Resoures-
 Static Resources-
-Images,Current User, recordId, objectApiName, permission, client formFactor
+Images/content asset,Current User, recordId, objectApiName, permission, client formFactor
 JS,css, Internationalisation
 label,content Asset, Toast Notification
 
