@@ -60,7 +60,7 @@ pageRefrence=Object
 
 navigateToHome(){
 	this[NavigationMixin.Navigate]({
-		type:'standard_namedPage',
+		type:'standard__namedPage',
 		attributes:{
 			pageName:'home'
 			}
