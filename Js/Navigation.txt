@@ -1,15 +1,15 @@
 Navigation- it is present in 'lightning/navigation'
-Navigate to home page .
-navigate to chatter
-navigate to new record .
-navigate to new record with default values .
-navigate to list view .
-navigateto files .
-navigate to record page in view and edit mode .
-navigate to tab .
-navigate to record relationship page
-navigate to external web page .
-navigate to lwc component .
+Navigate to home page .  NamedPage
+navigate to chatter		NamedPage
+navigate to new record .	objectPage
+navigate to new record with default values .  objectPage
+navigate to list view .		objectPage
+navigateto files .		objectPage
+navigate to record page in view and edit mode .			recordPage
+navigate to tab .			navItemPage
+navigate to record relationship page		recordRelationshipPage
+navigate to external web page .			webPage	
+navigate to lwc component .		webPage
 navigate to aura compoent .
 navigate to VF pages .
 fetch current page refrence
