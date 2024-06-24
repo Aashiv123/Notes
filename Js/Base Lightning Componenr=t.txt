@@ -49,7 +49,7 @@ Attributes:
 (user can also edit the record)
 
 	readonly=readonly - Creates a form to display a record without enabling edits. The form doesn't display any buttons.
-(In this mode, form loads with output fields only and you will not see edit icon or submit or cancle buttons)
+(In this mode, form loads with output fields only and you will not see edit icon or submit or cancle buttons) (retrive Data)
 
 6)Columns=use this attributes to show multiple columns in the form
 
