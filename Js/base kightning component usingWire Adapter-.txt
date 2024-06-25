@@ -1,4 +1,4 @@
-Wire Adapter(metaData)-gives you more flexibility
+Wire Adapter(metaData)-gives you more flexibility (Raw Data)
 	-more customization to create a form
 	-Raw data like - picklist,recordInfo,objectInfo
 	-you want to perform business logic
