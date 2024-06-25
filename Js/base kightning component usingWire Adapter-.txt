@@ -3,6 +3,8 @@ Wire Adapter(metaData)-gives you more flexibility (Raw Data)
 	-Raw data like - picklist,recordInfo,objectInfo
 	-you want to perform business logic
 
+-We need defaultRecordTypeId=to fetch the picklist values
+
 wire adapters and js functions are available in lightning/ui*Api modules which are build on user interface API.
 And this user interface API supports all cusotm and standard objects
 
