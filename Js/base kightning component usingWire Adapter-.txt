@@ -36,12 +36,12 @@ but in this method we can only fetch the Id of the user not the other details
 
 2)using wire adapter
 import { LightningElement, wire} from 'lwc';
-import {record} from 'lightning/uiRecordApi'
+import {getRecord} from 'lightning/uiRecordApi'
 
 export default class UserDetails extends LightningElement {
     
     //0055j000006jBE5AAM
-    @wire(record, {recordId:"0055j000006jBE5AAM", fields:['User.Name', 'User.Email']})
+    @wire(getRecord, {recordId:"0055j000006jBE5AAM", fields:['User.Name', 'User.Email']})
     userDetailhandler(response){
         console.log(response.data);
         console.log(response.error);
