@@ -17,7 +17,7 @@ And this user interface API supports all cusotm and standard objects
 4)lightning/uiAppApi-
 	get data & metadata for apps displayed in salesforce
 
-
+App-->object-->record-->list
 ***************
 @wire-It is build on Lightning Data Service
 -LWC components use @wire in their js class to read data from one of the wire adapters in the Lightning/ui*Api
