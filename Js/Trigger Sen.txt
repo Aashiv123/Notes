@@ -29,6 +29,7 @@ Validation rule-->before Trigger-->custom Validation Rule-->duplicate Rules-->Af
 1-Account trigger to set account rating as 'Hot' if account indusry is "Banking" or "Healthcare"
 
 2-Trigger on contact which will create Account record whenever contact is created withoud an account
+(Not related to any senario-u can skip)
 
 3-create a trigger on contact object, to make the email and phone fields should be mandatory upon creating or updating a contact record
 
