@@ -8,7 +8,7 @@ Wire Adapter(metaData)-gives you more flexibility (Raw Data)
 wire adapters and js functions are available in lightning/ui*Api modules which are build on user interface API.
 And this user interface API supports all cusotm and standard objects
 
-1)lightning/uiObjectInfoApi-
+1)lightning/uiObjectInfoApi----->perticularly Object
 	to get the metadata of a object
 	to get the picklist values
 2)lightning/uiListApi-	
