@@ -13,7 +13,7 @@ And this user interface API supports all cusotm and standard objects
 	to get the picklist values
 2)lightning/uiListApi-	
 	to get the records and metadata for a list view
-3)lightning/uiRecordApi-(recording)
+3)lightning/uiRecordApi-(recording)---->perticular record info, and specific field related to that record
 	use to capture data and get default values to create records
 	it also includes Js Api to create,delete,update and refresh records (CRUD operation)
 4)lightning/uiAppApi-
