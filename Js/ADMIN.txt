@@ -506,7 +506,7 @@ Disadvantage oF Process Builder:
 
 
 ************************************
-Workflow vs Process builder:
+Workflow vs Process builder: (both are declaritive process in admin part)
 -Both process builder and workflow are automation tools that execute whenever the records get created or edited. But the difference is workflow is an old-school automation tool, process builder gives you a user-friendly visual representation of the process as you build it.
 -you can do more with process builder as compared to workflows so in workflows we have four types of actions: Send an email, Field update, Task, Outbound message, and process builder we have 8 types of actions that are: Create a record, Update a record, Post something on to chatter, Launch a flow, Launch a quick action, Submit automatically for the approval, Call an apex code, Invoke another process.
 -Outbound messages can not be sent using process builder for that you’ll have to go for the workflow rules.
